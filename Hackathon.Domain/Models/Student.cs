@@ -1,4 +1,5 @@
 ﻿using Hackathon.Domain.Core;
+using Hackathon.Domain.Models;
 
 namespace Hackathon.Domain.Core.Common
 {
