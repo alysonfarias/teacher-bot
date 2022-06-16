@@ -1,4 +1,6 @@
-﻿namespace Hackathon.Domain.Models
+﻿using Hackathon.Domain.Core.Common;
+
+namespace Hackathon.Domain.Models
 {
     public class StudentClassRoom
     {
