@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.API\\Hackathon.API.csproj": {}
+    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.API\\Hackathon.API.csproj": {
+    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.API\\Hackathon.API.csproj",
+        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
         "projectName": "Hackathon.API",
-        "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.API\\Hackathon.API.csproj",
-        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.API\\obj\\",
+        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
+        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,14 +25,15 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Application\\Hackathon.Application.csproj": {
-                "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Application\\Hackathon.Application.csproj"
+              "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
+                "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj"
               }
             }
           }
@@ -88,20 +89,20 @@
         }
       }
     },
-    "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Application\\Hackathon.Application.csproj": {
+    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Application\\Hackathon.Application.csproj",
+        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
         "projectName": "Hackathon.Application",
-        "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Application\\Hackathon.Application.csproj",
-        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Application\\obj\\",
+        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
+        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -109,17 +110,18 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Domain\\Hackathon.Domain.csproj": {
-                "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Domain\\Hackathon.Domain.csproj"
+              "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+                "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
               },
-              "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj"
+              "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj"
               }
             }
           }
@@ -158,20 +160,20 @@
         }
       }
     },
-    "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Domain\\Hackathon.Domain.csproj",
+        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
         "projectName": "Hackathon.Domain",
-        "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Domain\\Hackathon.Domain.csproj",
-        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Domain\\obj\\",
+        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
+        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -179,6 +181,7 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -215,20 +218,20 @@
         }
       }
     },
-    "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
+    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
         "projectName": "Hackathon.Infrastructure",
-        "projectPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Pichau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pichau\\Desktop\\LubySoftware - Estágio\\Hackathon\\Hackathon.Infrastructure\\obj\\",
+        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Pichau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -236,6 +239,7 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
