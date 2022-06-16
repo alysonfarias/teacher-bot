@@ -787,6 +787,16 @@
             "rid": "win"
           }
         }
+      },
+      "Hackathon.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Hackathon.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hackathon.Domain.dll": {}
+        }
       }
     }
   },
@@ -2237,10 +2247,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Hackathon.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Hackathon.Domain/Hackathon.Domain.csproj",
+      "msbuildProject": "../Hackathon.Domain/Hackathon.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Hackathon.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Cryptography.KeyDerivation >= 6.0.6",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 6.0.6",
@@ -2258,11 +2274,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
       "projectName": "Hackathon.Infrastructure",
-      "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2282,7 +2298,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+              "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

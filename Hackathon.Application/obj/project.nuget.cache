@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CDQV+1QhDgBUALkJx9PZjoC4kmEOUH5dtNqEA/0j07ywepUh8wxLqZgUiY0RiG/5AGSrSvRK+roShIIBJAZggA==",
+  "dgSpecHash": "/L99P5LZ5U8P+HhmQZVekV9XxFm/Og4iIZmx5VpcY40TT9GQGtkOSLzJCTB/R0sQerRN2ysN/W9yLhHC31903w==",
   "success": true,
-  "projectFilePath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
+  "projectFilePath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wesle\\.nuget\\packages\\fluentvalidation\\11.0.3\\fluentvalidation.11.0.3.nupkg.sha512",
     "C:\\Users\\wesle\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.6\\microsoft.aspnetcore.cryptography.internal.6.0.6.nupkg.sha512",

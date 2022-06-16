@@ -24,4 +24,8 @@
     <Folder Include="Mappings\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hackathon.Domain\Hackathon.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

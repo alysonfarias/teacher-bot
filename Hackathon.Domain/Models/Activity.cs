@@ -8,7 +8,7 @@ namespace Hackathon.Domain.Models
         public string Description { get; set; }
         public ClassRoom ClassRoom { get; set; }
         public int ClassRoomId { get; set; }
-        public IEnumerable<File> Files { get; set; }
+        public IEnumerable<Arquive> Arquives { get; set; }
         public DateTime DueDate { get; set; }
     }
 }
