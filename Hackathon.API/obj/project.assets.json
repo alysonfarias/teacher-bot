@@ -921,6 +921,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Hackathon.Domain": "1.0.0",
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "6.0.6",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.EntityFrameworkCore": "6.0.6",
@@ -2594,11 +2595,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
+      "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
       "projectName": "Hackathon.API",
-      "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
+      "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
       "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\obj\\",
+      "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2619,8 +2620,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
-              "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj"
+            "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
+              "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj"
             }
           }
         }

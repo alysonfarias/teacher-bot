@@ -8,7 +8,7 @@ namespace Hackathon.Domain.Models
         public string Description { get; set; }
         public int InstructorId { get; set; }
         public Instructor Instructor { get; set; }
-        public IEnumerable<StudentClassRoom> Students { get; set; }
+        public IEnumerable<Student> Students { get; set; }
         public IEnumerable<Activity> Activities { get; set; }
     }
 }

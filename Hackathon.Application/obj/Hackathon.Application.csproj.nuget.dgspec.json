@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {}
+    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {}
   },
   "projects": {
-    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
+    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
+        "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
         "projectName": "Hackathon.Application",
-        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
+        "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
         "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\obj\\",
+        "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
-                "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
+              "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+                "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
               },
-              "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
-                "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj"
+              "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj"
               }
             }
           }
@@ -75,14 +75,14 @@
         }
       }
     },
-    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
         "projectName": "Hackathon.Domain",
-        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
+        "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
         "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\obj\\",
+        "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -133,14 +133,14 @@
         }
       }
     },
-    "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
+    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
         "projectName": "Hackathon.Infrastructure",
-        "projectPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -160,7 +160,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+                "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

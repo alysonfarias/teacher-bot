@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ol236YJrIeGOozMonF4JNItwcsQmIH30C72gPx/4QEPZnb9vCJL+uEgBNUVPC3nt/OVMbi+KZezZi1WsNDF4lQ==",
+  "dgSpecHash": "Avxj7RUeZfK/0QRCVUzZFCPR9GJRM00Rd/pRwZAyjeN5Uvk1EtenWCqcsCB9iE9sND/TtLAK32qYxwqPDg8Llg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
+  "projectFilePath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.API\\Hackathon.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wesle\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\wesle\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
