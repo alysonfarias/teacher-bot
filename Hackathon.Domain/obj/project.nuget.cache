@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dNuDsayrlNruMzQFjUwAPGHFH/rhfmB/3pnEIkdgS3g0mdET64fNSiS4NitYZcVJrmbwEZtZNnqH4qC6T0Drbg==",
+  "dgSpecHash": "fUN7axpkzWqZ7ypBQwDZcRbgtLxD36fnmmjHEaEdx+yiXt+HlvD3f9CEPjMPds5K/nKRWj4TB8Mkvbbncxa3ZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
+  "projectFilePath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

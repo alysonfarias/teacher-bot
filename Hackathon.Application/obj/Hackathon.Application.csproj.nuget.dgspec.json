@@ -1,42 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {}
+    "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Application/Hackathon.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj": {
+    "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Application/Hackathon.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
+        "projectUniqueName": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Application/Hackathon.Application.csproj",
         "projectName": "Hackathon.Application",
-        "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\Hackathon.Application.csproj",
-        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Application\\obj\\",
+        "projectPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Application/Hackathon.Application.csproj",
+        "packagesPath": "/home/user/.nuget/packages/",
+        "outputPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Application/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
-                "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
+              "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj": {
+                "projectPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj"
               },
-              "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj"
+              "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj": {
+                "projectPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj"
               }
             }
           }
@@ -71,32 +65,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
+    "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
+        "projectUniqueName": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj",
         "projectName": "Hackathon.Domain",
-        "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj",
-        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\obj\\",
+        "projectPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj",
+        "packagesPath": "/home/user/.nuget/packages/",
+        "outputPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -129,40 +117,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj": {
+    "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
+        "projectUniqueName": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj",
         "projectName": "Hackathon.Infrastructure",
-        "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\Hackathon.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Infrastructure\\obj\\",
+        "projectPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Infrastructure/Hackathon.Infrastructure.csproj",
+        "packagesPath": "/home/user/.nuget/packages/",
+        "outputPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Infrastructure/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj": {
-                "projectPath": "C:\\Users\\wesle\\Luby\\teacher-bot\\Hackathon.Domain\\Hackathon.Domain.csproj"
+              "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj": {
+                "projectPath": "/home/user/Documentos/LabLuby/Projetos/teacher-bot/Hackathon.Domain/Hackathon.Domain.csproj"
               }
             }
           }
@@ -227,7 +209,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }
