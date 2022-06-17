@@ -4,6 +4,7 @@ using Hackathon.Domain.Models;
 using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 using Hackathon.Infrastructure.Mappings;
+using Hackathon.Infrastructure.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
@@ -49,8 +50,7 @@ namespace Hackathon.Infrastructure.Context
                 {
                     Id = 1,
                     Username = "admin",
-                    //Password = PasswordHasher.Hash("Pass123$"),
-                    Password = "Pass123$",
+                    Password = PasswordHasher.Hash("Pass123$"),
                     Email = "admin@api.com",
                     Name = "Admin Root Application",
                     CreatedAt = DateTime.ParseExact("15/06/2022", "dd/MM/yyyy", CultureInfo.InvariantCulture),
