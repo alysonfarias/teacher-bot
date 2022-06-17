@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,16 +6,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.0.3" />
+    <Compile Remove="DTO\**" />
+    <Compile Remove="Exceptions\**" />
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Utils\**" />
+    <Compile Remove="Validator\**" />
+    <EmbeddedResource Remove="DTO\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Utils\**" />
+    <EmbeddedResource Remove="Validator\**" />
+    <None Remove="DTO\**" />
+    <None Remove="Exceptions\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Utils\**" />
+    <None Remove="Validator\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.0.3" />
+  </ItemGroup>
+	
+
+  <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Utils\" />
-    <Folder Include="Validator\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

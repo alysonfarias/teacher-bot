@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using System;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
 namespace Hackathon.Infrastructure.Utils
 {
+    /// <summary>
+    /// Implements the standard Identity password hashing.
+    /// </summary>
     public class PasswordHasher
     {
         /* =======================
@@ -28,7 +30,9 @@ namespace Hackathon.Infrastructure.Utils
         public static string Hash(string password)
         {
             if (password == null)
+            {
                 throw new ArgumentNullException(nameof(password));
+            }
 
             return Convert.ToBase64String(HashPasswordV3(password, _rng));
         }
@@ -42,19 +46,26 @@ namespace Hackathon.Infrastructure.Utils
         public static bool Verify(string providedPassword, string hashedPassword)
         {
             if (hashedPassword == null)
+            {
                 throw new ArgumentNullException(nameof(hashedPassword));
-
+            }
             if (providedPassword == null)
+            {
                 throw new ArgumentNullException(nameof(providedPassword));
+            }
 
             byte[] decodedHashedPassword = Convert.FromBase64String(hashedPassword);
 
             // read the format marker from the hashed password
             if (decodedHashedPassword.Length == 0)
+            {
                 return false;
+            }
 
             if (VerifyHashedPasswordV3(decodedHashedPassword, providedPassword))
+            {
                 return true;
+            }
 
             return false;
         }
@@ -142,11 +153,13 @@ namespace Hackathon.Infrastructure.Utils
         private static bool ByteArraysEqual(byte[] a, byte[] b)
         {
             if (a == null && b == null)
+            {
                 return true;
-
+            }
             if (a == null || b == null || a.Length != b.Length)
+            {
                 return false;
-
+            }
             var areSame = true;
             for (var i = 0; i < a.Length; i++)
             {
