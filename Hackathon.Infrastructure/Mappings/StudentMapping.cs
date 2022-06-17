@@ -30,7 +30,7 @@ namespace Hackathon.Infrastructure.Mappings
                         x.Property(p => p.StudentId).HasColumnName("id_student").IsRequired();
                     }
                 ); ;
-            //falta implementar a config de responsible phones
+            //TODO:falta implementar a config de responsible phones
         }
     }
 }
