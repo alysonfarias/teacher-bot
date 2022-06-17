@@ -1,6 +1,6 @@
 namespace Hackathon.Application.DTOS.Common
 {
-    public class UserViewModel
+    public class UserRequest
     {
         public int UserRoleId { get; set; }
         public string Name { get; set; }
