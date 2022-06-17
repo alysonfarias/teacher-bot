@@ -16,7 +16,7 @@ namespace Hackathon.Infrastructure.Mappings
         {
             if(!string.IsNullOrEmpty(_tableName)) builder.ToTable(_tableName);
 
-            builder.HasKey(x => x.Id);
+            builder.HasIndex(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("id").ValueGeneratedOnAdd();
 
             builder

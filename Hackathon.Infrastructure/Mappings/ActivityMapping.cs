@@ -15,7 +15,7 @@ namespace Hackathon.Infrastructure.Mappings
             base.Configure(builder);
 
             builder.Property(x => x.Title).HasColumnName("name").HasColumnType("varchar(200)").IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(200)").IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(400)").IsRequired().HasMaxLength(400);
             builder.Property(x => x.DueDate).HasColumnName("dueDate").IsRequired();
 
             builder
