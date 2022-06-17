@@ -1,4 +1,5 @@
 ﻿using Hackathon.Domain.Core;
+using Hackathon.Domain.Core.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

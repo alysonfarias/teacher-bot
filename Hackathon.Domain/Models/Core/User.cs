@@ -1,7 +1,7 @@
 ﻿using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Models.Enumerations;
 
-namespace Hackathon.Domain.Core
+namespace Hackathon.Domain.Models.Core
 {
     public class User : Register
     {
