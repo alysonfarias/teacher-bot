@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Hackathon.Domain.Core
+namespace Hackathon.Domain.Core.Common
 {
     public abstract class Enumeration : IComparable
     {

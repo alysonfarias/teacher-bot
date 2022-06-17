@@ -1,4 +1,4 @@
-﻿using Hackathon.Domain.Core;
+﻿using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 
 namespace Hackathon.Domain.Models
