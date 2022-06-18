@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hackathon.Application.DTOS.Common;
+using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 
