@@ -25,9 +25,9 @@ namespace Hackathon.Infrastructure.Mappings
                 .HasMany(it => it.Classrooms)
                 .WithOne()
                 .HasForeignKey(cl => cl.InstructorId)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
             
-            //OnDelete() ?
                 
         }
     }

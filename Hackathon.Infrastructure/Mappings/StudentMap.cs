@@ -9,10 +9,8 @@ namespace Hackathon.Infrastructure.Mappings
     {
         protected override void ConfigureOtherUserProperties(EntityTypeBuilder<Student> builder)
         {
-            /*
-                Configurar o ResponsiblePhones , ao se tratar de um atributo multi valorado
-                eh criada uma nova tabela com o StudentId e o Telefone
-            */
+            builder.Property(st => st.ResponsiblePhone).HasMaxLength(20);
+            
             builder
                 .HasOne(st=> st.UserRole)
                 .WithMany()

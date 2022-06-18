@@ -1,5 +1,6 @@
 using Hackathon.Domain.Core.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hackathon.Infrastructure.Mappings.Base
@@ -12,11 +13,12 @@ namespace Hackathon.Infrastructure.Mappings.Base
             builder.HasKey(re => re.Id);
 
             builder.Property(re => re.CreatedAt)
-                .HasColumnType("datetime")
-                .IsRequired();
+                .HasDefaultValueSql("getDate()");
 
             builder.Property(re => re.UpdatedAt)
-                .HasColumnType("datetime");
+                .ValueGeneratedOnUpdate()
+                .HasDefaultValueSql("getDate()")
+                .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save);
             
             ConfigureOtherProperties(builder);
         }
