@@ -10,17 +10,17 @@ namespace Hackathon.Infrastructure.Mappings
         protected override void ConfigureOtherUserProperties(EntityTypeBuilder<Student> builder)
         {
             builder.Property(st => st.ResponsiblePhone).HasMaxLength(20);
-            
-            builder
-                .HasOne(st=> st.UserRole)
-                .WithMany()
-                .HasForeignKey(st=>st.UserRoleId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
-        
-            builder
-                .HasMany(st => st.ClassRooms)
-                .WithMany(cl => cl.Students);
+
+            builder.HasMany(x => x.ClassRooms)
+            .WithMany(x => x.Students)
+            .UsingEntity<StudentClassRoom>(
+                x => x.HasOne(p => p.ClassRoom).WithMany().HasForeignKey(x => x.ClassRoomId),
+                x => x.HasOne(p => p.Student).WithMany().HasForeignKey(x => x.StudentId),
+                x =>
+                {
+                    x.ToTable("tb_student_classroom");
+                    x.HasKey(p => new { p.ClassRoomId, p.StudentId });
+                });
         }
     }
 }

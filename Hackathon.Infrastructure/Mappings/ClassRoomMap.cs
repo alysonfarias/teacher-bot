@@ -16,7 +16,6 @@ namespace Hackathon.Infrastructure.Mappings
                 .WithOne()
                 .HasForeignKey(at => at.ClassRoomId )
                 .IsRequired();
-            
                 
         }
     }

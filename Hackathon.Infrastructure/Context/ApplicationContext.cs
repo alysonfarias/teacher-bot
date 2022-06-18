@@ -1,4 +1,5 @@
-﻿using Hackathon.Domain.Core;
+﻿using Hackathon.Domain;
+using Hackathon.Domain.Core;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Models;
 using Hackathon.Domain.Models.Core;
@@ -14,6 +15,7 @@ namespace Hackathon.Infrastructure.Context
     {
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<ClassRoom> ClassRooms { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Arquive> Arquives { get; set; }

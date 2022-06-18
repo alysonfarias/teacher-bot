@@ -16,7 +16,7 @@ namespace Hackathon.Infrastructure.Mappings
                 .WithMany()
                 .HasForeignKey(aq => aq.FileTypeId)
                 .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
