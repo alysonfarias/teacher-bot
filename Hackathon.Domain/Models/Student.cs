@@ -1,7 +1,6 @@
-﻿using Hackathon.Domain.Models;
-using Hackathon.Domain.Models.Core;
+﻿using Hackathon.Domain.Models.Core;
 
-namespace Hackathon.Domain.Core.Common
+namespace Hackathon.Domain.Models
 {
     public class Student : User
     {
