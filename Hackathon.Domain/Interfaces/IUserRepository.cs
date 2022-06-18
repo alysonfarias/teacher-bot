@@ -4,5 +4,6 @@ namespace Hackathon.Domain.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
     {
+        Task<User> GetUserByName(string username);
     }
 }

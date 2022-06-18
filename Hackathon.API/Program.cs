@@ -6,14 +6,17 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<TokenGeneratorOptions>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
     options.UseSqlServer(builder.Configuration["ConnectionString:AWS_SQLServerConnection"]);
 });
 
-
+builder.Services.SolveAuthConfig(builder.Configuration);
+builder.Services.SolveDependencyInjection();
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureSwagger();

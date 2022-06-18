@@ -28,12 +28,6 @@
     <PackageReference Include="FluentValidation" Version="11.0.3" />
     <PackageReference Include="LinqKit" Version="1.2.2" />
   </ItemGroup>
-	
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Hackathon.Domain\Hackathon.Domain.csproj" />
