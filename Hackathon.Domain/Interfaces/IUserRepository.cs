@@ -3,6 +3,5 @@
 namespace Hackathon.Domain.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
-    {
-    }
+    {}
 }
