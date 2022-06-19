@@ -1,12 +1,12 @@
 ﻿using Hackathon.Domain.Core.Common;
-using Hackathon.Domain.Interfaces;
+using Hackathon.Domain.Interfaces.Base;
 using Hackathon.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Hackathon.Infrastructure.Repositories
+namespace Hackathon.Infrastructure.Repositories.Base
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : Register
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : Register
     {
        private readonly ApplicationContext _context;
        private readonly DbSet<T> _set;
