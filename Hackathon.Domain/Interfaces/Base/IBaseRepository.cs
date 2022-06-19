@@ -1,7 +1,7 @@
 ﻿using Hackathon.Domain.Core.Common;
 using System.Linq.Expressions;
 
-namespace Hackathon.Domain.Interfaces
+namespace Hackathon.Domain.Interfaces.Base
 {
     public interface IBaseRepository<T> where T : Register
     {
