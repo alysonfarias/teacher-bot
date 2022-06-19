@@ -1,6 +1,6 @@
-namespace Hackathon.Application.Exceptions
+namespace Hackathon.Application.CustomExceptions
 {
-    public class NotAuthorized : Exception
+    public class NotAuthorizedException : Exception
     {
         public NotAuthorizedException() : base("O usuario nao tem permissao")
         {}

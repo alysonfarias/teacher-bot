@@ -1,4 +1,4 @@
-namespace Hackathon.Application.Exceptions
+namespace Hackathon.Application.CustomExceptions
 {
     public class NotFoundException : Exception
     {

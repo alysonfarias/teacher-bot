@@ -1,9 +1,9 @@
 using FluentValidation.Results;
 
-namespace Hackathon.Application.Exceptions
+namespace Hackathon.Application.CustomExceptions
 {
     public class BadRequestException : Exception
-    {       
+    {
         public List<ValidationFailure> Errors { get; set; } = new List<ValidationFailure>();
         
         public BadRequestException(string propertie, string errorMessage) : this()
@@ -18,7 +18,5 @@ namespace Hackathon.Application.Exceptions
 
         public BadRequestException() : base("Requisição inválida.")
         {}
- 
-
     }
 }
