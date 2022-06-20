@@ -4,6 +4,7 @@ using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Interfaces.Repositories;
 using Hackathon.Domain.Models;
 using Hackathon.Infrastructure.Repositories;
+using FluentValidation.AspNetCore;
 
 namespace Hackathon.API.Config
 {
@@ -13,8 +14,12 @@ namespace Hackathon.API.Config
         {
             services.AddScoped<IStudentRepository,StudentRepository>();
             services.AddScoped<IInstructorRepository,InstructorRepository>();
+
             services.AddScoped<IUserRepository<Student>,StudentRepository>();
             services.AddScoped<IUserRepository<Instructor>,InstructorRepository>();
+
+            services.AddFluentValidation(); 
+
 
             return services;
         }

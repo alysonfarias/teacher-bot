@@ -4,15 +4,16 @@ using System.Linq.Expressions;
 
 namespace Hackathon.Application.Params
 {
-    public class UserParams : BaseParams<User>
+    public class UserParams<T> : BaseParams<T>
+    where T: User
     {
         public string Name { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
 
-        public override Expression<Func<User, bool>> Filter()
+        public override Expression<Func<T, bool>> Filter()
         {
-            var predicate = PredicateBuilder.New<User>();
+            var predicate = PredicateBuilder.New<T>(true);
 
             if (!string.IsNullOrEmpty(Name))
                 predicate = predicate.And(x => x.Name.Contains(Name));

@@ -1,7 +1,8 @@
 using AutoMapper;
-using Hackathon.Application.DTOS.Common;
 using Hackathon.Application.DTOS.Enumerations;
-using Hackathon.Domain.Models.Core;
+using Hackathon.Application.DTOS.Instructor;
+using Hackathon.Application.DTOS.Student;
+using Hackathon.Domain.Models;
 using Hackathon.Domain.Models.Enumerations;
 
 namespace Hackathon.Application.Mappers
@@ -10,7 +11,8 @@ namespace Hackathon.Application.Mappers
     {
         public DomainToResponseProfile()
         {
-            CreateMap<User, UserResponse>();
+            CreateMap<Instructor, InstructorResponse>();
+            CreateMap<Student, StudentResponse>();
             CreateMap<UserRole, UserRoleResponse>();
         }
     }

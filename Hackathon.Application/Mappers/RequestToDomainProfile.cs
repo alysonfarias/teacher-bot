@@ -1,6 +1,7 @@
 using AutoMapper;
-using Hackathon.Application.DTOS.Common;
-using Hackathon.Domain.Models.Core;
+using Hackathon.Application.DTOS.Instructor;
+using Hackathon.Application.DTOS.Student;
+using Hackathon.Domain.Models;
 
 namespace Hackathon.Application.Mappers
 {
@@ -8,7 +9,8 @@ namespace Hackathon.Application.Mappers
     {
         public RequestToDomainProfile()
         {
-            CreateMap<UserRequest, User>();
+            CreateMap<InstructorRequest,Instructor>();
+            CreateMap<StudentRequest,Student>();
         }
     }
 }
