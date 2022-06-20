@@ -1,56 +1,69 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Hackathon.Application.DTOS.Common;
 using Hackathon.Application.Params;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Interfaces;
+using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 using Hackathon.Infrastructure.Utils;
 
 namespace Hackathon.Application.Services
 {
-    public class UserService
+    public abstract class UserService<T,Req,Res>
+    where T: User
+    where Req : UserRequest
+    where Res: UserResponse
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository<T> _userRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        public IValidator<Req> _userRequestValidator {get; set;}
 
-        public UserService(IUserRepository userRepository, IMapper mapper, IUnitOfWork unitOfWork)
+        public UserService
+        (
+            IUserRepository<T> userRepository, 
+            IMapper mapper, 
+            IUnitOfWork unitOfWork,
+            IValidator<Req> userRequestValidator
+        )
         {
+            _userRequestValidator = userRequestValidator;
             _userRepository = userRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<UserResponse> RegisterAsync(UserRequest userRequest)
+        public async Task<Res> RegisterAsync(Req userRequest)
         {
             /*var validation = await _validator.ValidateAsync(userRequest);
             if (!validation.IsValid)
                 throw new BadRequestException(validation);*/
 
-            var user = _mapper.Map<User>(userRequest);
+            T user = _mapper.Map<T>(userRequest);
             user.Password = PasswordHasher.Hash(userRequest.Password);
             await _userRepository.RegisterAsync(user);
             await _unitOfWork.CommitAsync();
-            return _mapper.Map<UserResponse>(user);
+            return _mapper.Map<Res>(user);
         }
 
-        public async Task<IEnumerable<UserResponse>> GetAsync(UserParams queryParams = null)
+        public async Task<IEnumerable<Res>> GetAsync(UserParams<T> queryParams = null)
         {
-            return _mapper.Map<IEnumerable<UserResponse>>(await _userRepository.GetAllAsync(queryParams.Filter()));
+            return _mapper.Map<IEnumerable<Res>>(await _userRepository.GetAllAsync(queryParams.Filter()));
         }
 
-        public async Task<UserResponse> GetByIdAsync(int id)
+        public async Task<Res> GetByIdAsync(int id)
         {
-            return _mapper.Map<UserResponse>(await _userRepository.GetByIdAsync(id));
+            return _mapper.Map<Res>(await _userRepository.GetByIdAsync(id));
         }
 
-        public IEnumerable<UserRoleResponse> GetUserRoles()
+        public IEnumerable<Res> GetUserRoles()
         {
-            return _mapper.Map<IEnumerable<UserRoleResponse>>(Enumeration.GetAll<UserRole>());
+            return _mapper.Map<IEnumerable<Res>>(Enumeration.GetAll<UserRole>());
         }
 
-        public async Task<UserResponse> RemoveAsync(int id)
+        public async Task<Res> RemoveAsync(int id)
         {
             var existing = await _userRepository.GetByIdAsync(id);
             if (existing is null)
@@ -58,10 +71,10 @@ namespace Hackathon.Application.Services
 
             await _userRepository.RemoveAsync(id);
             await _unitOfWork.CommitAsync();
-            return _mapper.Map<UserResponse>(existing);
+            return _mapper.Map<Res>(existing);
         }
 
-        public async Task<UserResponse> UpdateAsync(UserRequest userRequest, int id)
+        public async Task<Res> UpdateAsync(Req userRequest, int id)
         {
             var existing = await _userRepository.GetByIdAsync(id);
             if (existing is null)
@@ -78,7 +91,7 @@ namespace Hackathon.Application.Services
             await _userRepository.UpdateAsync(existing);
 
             await _unitOfWork.CommitAsync();
-            return _mapper.Map<UserResponse>(existing);
+            return _mapper.Map<Res>(existing);
         }
     }
 }

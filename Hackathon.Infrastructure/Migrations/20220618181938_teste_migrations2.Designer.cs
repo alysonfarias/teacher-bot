@@ -4,6 +4,7 @@ using Hackathon.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackathon.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220618181938_teste_migrations2")]
+    partial class teste_migrations2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,8 +67,6 @@ namespace Hackathon.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
@@ -84,13 +84,6 @@ namespace Hackathon.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(400)
-                        .HasColumnType("varchar(400)")
-                        .HasColumnName("description");
-
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("dueDate");
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -101,8 +94,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchar(200)")
-                        .HasColumnName("name");
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -114,9 +105,6 @@ namespace Hackathon.Infrastructure.Migrations
 
                     b.HasIndex("ClassRoomId");
 
-                    b.HasIndex("Id");
-
-                    b.ToTable("tb_activity", (string)null);
                     b.HasIndex("ClassRoomId1");
 
                     b.ToTable("Activities");
@@ -126,8 +114,6 @@ namespace Hackathon.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
@@ -138,18 +124,12 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Property<int?>("ActivityId1")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClassRoomId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getDate()");
 
                     b.Property<string>("DataBase64")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("dataBase64");
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FileTypeId")
@@ -166,13 +146,6 @@ namespace Hackathon.Infrastructure.Migrations
 
                     b.HasIndex("ActivityId1");
 
-                    b.HasIndex("ClassRoomId");
-
-                    b.HasIndex("FileTypeId");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("tb_arquive", (string)null);
                     b.HasIndex("FileTypeId");
 
                     b.ToTable("Arquives");
@@ -182,8 +155,6 @@ namespace Hackathon.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
@@ -195,20 +166,12 @@ namespace Hackathon.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(400)
-                        .HasColumnType("varchar(400)")
-                        .HasColumnName("description");
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)")
-                        .HasColumnName("name");
                     b.Property<int?>("InstructorId1")
                         .HasColumnType("int");
 
@@ -224,14 +187,6 @@ namespace Hackathon.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
-
-                    b.HasIndex("InstructorId");
-
-                    b.ToTable("tb_classroom", (string)null);
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Models.Core.User", b =>
                     b.HasIndex("InstructorId");
 
                     b.HasIndex("InstructorId1");
@@ -247,79 +202,6 @@ namespace Hackathon.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("birthDate");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("email");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)")
-                        .HasColumnName("name");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("password");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserRoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)")
-                        .HasColumnName("userName");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserRoleId");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BirthDate = new DateTime(2022, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTime(2022, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "admin@api.com",
-                            Name = "Admin Root Application",
-                            Password = "AQAAAAEAAAPoAAAAEPx+ytbWRKAc+Yjy05HlGh3gHVAl2EN18T99RSjA5WJ2hUDS6mFKq56fSkf+NdP8Og==",
-                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserRoleId = 1,
-                            Username = "admin"
-                        });
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Models.Enumerations.FileType", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileTypes");
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("Varchar(30)");
@@ -359,18 +241,6 @@ namespace Hackathon.Infrastructure.Migrations
             modelBuilder.Entity("Hackathon.Domain.Models.Enumerations.Subject", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subjects");
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -410,18 +280,6 @@ namespace Hackathon.Infrastructure.Migrations
             modelBuilder.Entity("Hackathon.Domain.Models.Enumerations.UserRole", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserRoles");
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -453,15 +311,6 @@ namespace Hackathon.Infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Hackathon.Domain.Models.StudentClassRoom", b =>
-                {
-                    b.Property<int>("ClassRoomId")
-                        .HasColumnType("int")
-                        .HasColumnName("id_classroom");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int")
-                        .HasColumnName("id_student");
             modelBuilder.Entity("Hackathon.Domain.Models.Instructor", b =>
                 {
                     b.Property<int>("Id")
@@ -588,26 +437,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.ToTable("tb_student_classroom", (string)null);
                 });
 
-            modelBuilder.Entity("Hackathon.Domain.Core.Common.Student", b =>
-                {
-                    b.HasBaseType("Hackathon.Domain.Models.Core.User");
-
-                    b.Property<string>("ResponsiblePhones")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.ToTable("tb_student", (string)null);
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Models.Instructor", b =>
-                {
-                    b.HasBaseType("Hackathon.Domain.Models.Core.User");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("tb_instructor", (string)null);
             modelBuilder.Entity("Hackathon.Domain.Admin", b =>
                 {
                     b.HasOne("Hackathon.Domain.Models.Enumerations.UserRole", "UserRole")
@@ -621,12 +450,6 @@ namespace Hackathon.Infrastructure.Migrations
 
             modelBuilder.Entity("Hackathon.Domain.Models.Activity", b =>
                 {
-                    b.HasOne("Hackathon.Domain.Models.ClassRoom", "ClassRoom")
-                        .WithMany("Activities")
-                        .HasForeignKey("ClassRoomId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Hackathon.Domain.Models.ClassRoom", null)
                         .WithMany("Activities")
                         .HasForeignKey("ClassRoomId")
@@ -642,23 +465,12 @@ namespace Hackathon.Infrastructure.Migrations
 
             modelBuilder.Entity("Hackathon.Domain.Models.Arquive", b =>
                 {
-                    b.HasOne("Hackathon.Domain.Models.Activity", "Activity")
-                        .WithMany()
                     b.HasOne("Hackathon.Domain.Models.Activity", null)
                         .WithMany("Arquives")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Hackathon.Domain.Models.Activity", null)
-                        .WithMany("Arquives")
-                        .HasForeignKey("ActivityId1");
-
-                    b.HasOne("Hackathon.Domain.Models.ClassRoom", "ClassRoom")
-                        .WithMany()
-                        .HasForeignKey("ClassRoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                     b.HasOne("Hackathon.Domain.Models.Activity", "Activity")
                         .WithMany()
                         .HasForeignKey("ActivityId1");
@@ -671,23 +483,11 @@ namespace Hackathon.Infrastructure.Migrations
 
                     b.Navigation("Activity");
 
-                    b.Navigation("ClassRoom");
-
                     b.Navigation("FileType");
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.ClassRoom", b =>
                 {
-                    b.HasOne("Hackathon.Domain.Models.Instructor", "Instructor")
-                        .WithMany("Classrooms")
-                        .HasForeignKey("InstructorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Instructor");
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Models.Core.User", b =>
                     b.HasOne("Hackathon.Domain.Models.Instructor", null)
                         .WithMany("Classrooms")
                         .HasForeignKey("InstructorId")
@@ -725,7 +525,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasOne("Hackathon.Domain.Models.Enumerations.UserRole", "UserRole")
                         .WithMany()
                         .HasForeignKey("UserRoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -740,7 +539,6 @@ namespace Hackathon.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Hackathon.Domain.Core.Common.Student", "Student")
                     b.HasOne("Hackathon.Domain.Models.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
@@ -750,32 +548,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Navigation("ClassRoom");
 
                     b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Core.Common.Student", b =>
-                {
-                    b.HasOne("Hackathon.Domain.Models.Core.User", null)
-                        .WithOne()
-                        .HasForeignKey("Hackathon.Domain.Core.Common.Student", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Models.Instructor", b =>
-                {
-                    b.HasOne("Hackathon.Domain.Models.Core.User", null)
-                        .WithOne()
-                        .HasForeignKey("Hackathon.Domain.Models.Instructor", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.HasOne("Hackathon.Domain.Models.Enumerations.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.Activity", b =>

@@ -1,4 +1,5 @@
-﻿using Hackathon.Domain.Core;
+﻿using Hackathon.Domain;
+using Hackathon.Domain.Core;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Models;
 using Hackathon.Domain.Models.Core;
@@ -12,9 +13,9 @@ namespace Hackathon.Infrastructure.Context
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<ClassRoom> ClassRooms { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Arquive> Arquives { get; set; }
@@ -28,10 +29,6 @@ namespace Hackathon.Infrastructure.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
 
-            modelBuilder.ApplyConfiguration(new EnumerationMapping<FileType>());
-            modelBuilder.ApplyConfiguration(new EnumerationMapping<Subject>());
-            modelBuilder.ApplyConfiguration(new EnumerationMapping<UserRole>());
-
             modelBuilder
                 .Entity<FileType>()
                 .HasData(Enumeration.GetAll<FileType>());
@@ -44,19 +41,8 @@ namespace Hackathon.Infrastructure.Context
                 .Entity<UserRole>()
                 .HasData(Enumeration.GetAll<UserRole>());
 
-            modelBuilder
-                .Entity<User>()
-                .HasData(new User
-                {
-                    Id = 1,
-                    Username = "admin",
-                    Password = PasswordHasher.Hash("Pass123$"),
-                    Email = "admin@api.com",
-                    Name = "Admin Root Application",
-                    CreatedAt = DateTime.ParseExact("15/06/2022", "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    BirthDate = DateTime.ParseExact("15/06/2022", "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    UserRoleId = UserRole.Admin.Id
-                });
+            //Create the Admin
+            
         }
     }
 }
