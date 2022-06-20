@@ -19,7 +19,6 @@ namespace Hackathon.Application.Validators
             RuleFor(ir => ir.UserRoleId)
                 .Must(type => Enumeration.GetAll<Subject>().Any(subject => subject.Id==type))
                 .WithMessage("Disciplina invalida");
-
         }
     }
 }
