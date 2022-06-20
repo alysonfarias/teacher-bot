@@ -1,6 +1,7 @@
 using Hackathon.API.Config;
 using Hackathon.API.Filters;
 using Hackathon.Application.Mappers;
+using Hackathon.Application.Options;
 using Hackathon.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,5 @@
-﻿using Hackathon.Application.Roles;
+﻿using Hackathon.Application.Options;
+using Hackathon.Application.Roles;
 using Hackathon.Domain.Models.Enumerations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;

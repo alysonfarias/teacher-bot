@@ -20,7 +20,8 @@ namespace Hackathon.API.Config
             services.AddScoped<ApplicationContext>();
 
             //services
-            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ILoginService<Student>, LoginService<Student>();
+            services.AddScoped<ILoginService<Instructor>, LoginService<Instructor>();
 
             //auth
             services.AddScoped<IAuthService, AuthService>();
