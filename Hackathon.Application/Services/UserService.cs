@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.DTOS.Common;
-using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Application.Params;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Interfaces;

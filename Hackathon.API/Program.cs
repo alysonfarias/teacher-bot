@@ -31,7 +31,7 @@ app.Run();
 void ConfigureServices(IServiceCollection services, ConfigurationManager configuration)
 {
     services.AddHttpContextAccessor();
-    services.AddDependencyInjection();
+    services.AddDependencyInjection(); 
     services.AddControllers(opts =>
     {
         opts.Filters.Add(new ApplicationExceptionFilter());
