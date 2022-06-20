@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Hackathon.Application.DTOS.Common;
 using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Domain.Models.Core;
@@ -6,12 +6,11 @@ using Hackathon.Domain.Models.Enumerations;
 
 namespace Hackathon.Application.Mappers
 {
-    public class MappingProfile : Profile
+    public class DomainToResponseProfile : Profile
     {
-        public MappingProfile()
+        public DomainToResponseProfile()
         {
             CreateMap<User, UserResponse>();
-            CreateMap<UserRequest, User>();
             CreateMap<UserRole, UserRoleResponse>();
         }
     }

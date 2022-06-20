@@ -36,7 +36,7 @@ void ConfigureServices(IServiceCollection services, ConfigurationManager configu
     {
         opts.Filters.Add(new ApplicationExceptionFilter());
     });  
-    builder.Services.AddAutoMapper(typeof(MappingProfile));
+    builder.Services.AddAutoMapper(typeof(DomainToResponseProfile), typeof(RequestToDomainProfile));
 }
 
 void ConfigureMiddleware(WebApplication app, IServiceProvider services)
