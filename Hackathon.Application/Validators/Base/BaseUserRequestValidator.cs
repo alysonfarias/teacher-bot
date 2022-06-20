@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Application.Validators.Base
 {
-    public class BaseUserRequestValidator<T> : AbstractValidator<T>
+    public class BaseUserRequestValidator<T,U> : AbstractValidator<T>
     where T: UserRequest
+    where U : User
     {
-        public BaseUserRequestValidator()
+        public BaseUserRequestValidator(IUserRepository<U> _userRepository)
         {
             RuleFor(ur => ur.Name)
                 .NotEmpty().WithMessage("Nome não pode ser vazio")
@@ -20,10 +21,19 @@ namespace Hackathon.Application.Validators.Base
             RuleFor(ur => ur.Username)
                 .NotEmpty().WithMessage("Username não pode ser vazio")
                 .MaximumLength(200).WithMessage("Username não pode ser vazio");
+                
+            RuleFor(ir=> ir.Username)
+                .MustAsync((username,cancellationToken) =>  _userRepository.Query().AsNoTracking().AllAsync(sr => sr.Username != username,cancellationToken))
+                .WithMessage("Username já presente no banco");
+            
 
             RuleFor(ur => ur.Email)
                 .NotEmpty().WithMessage("Email não pode ser vazio")
                 .EmailAddress().WithMessage("Insira um email válido");
+            
+            RuleFor(ir => ir.Email)
+                .MustAsync((email,cancellationToken)=> _userRepository.Query().AsNoTracking().AllAsync(us=> us.Email != email,cancellationToken))
+                .WithMessage("Email já presente no banco");
             
             RuleFor(ur => ur.BirthDate)
                 .LessThan(p => DateTime.Now).WithMessage("A data deve estar no passado");

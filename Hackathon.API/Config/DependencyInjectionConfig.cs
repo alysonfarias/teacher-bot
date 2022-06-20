@@ -14,7 +14,8 @@ namespace Hackathon.API.Config
             services.AddScoped<IStudentRepository,StudentRepository>();
             services.AddScoped<IInstructorRepository,InstructorRepository>();
             services.AddScoped<IUserRepository<Student>,StudentRepository>();
-            services.AddScoped<IUserRepository<Instructor>,InstructorRepository>();
+            services.AddScoped<IUserRepository<Instructor>,InstructorRepository>(); 
+
 
             return services;
         }

@@ -3,23 +3,16 @@ using FluentValidation;
 using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Validators.Base;
 using Hackathon.Domain.Interfaces.Repositories;
+using Hackathon.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Application.Validators
 {
-    public class StudentValidator : BaseUserRequestValidator<StudentRequest>
+    public class StudentValidator : BaseUserRequestValidator<StudentRequest,Student>
     {   
         public StudentValidator(IStudentRepository _studentRepository)
-        :base()
+        :base(_studentRepository)
         {
-            RuleFor(sr=> sr.Username)
-                .MustAsync((username,cancellationToken) =>  _studentRepository.Query().AsNoTracking().AllAsync(sr => sr.Username != username,cancellationToken))
-                .WithMessage("Username já presente no banco");
-            
-            RuleFor(sr => sr.Email)
-                .MustAsync((email,cancellationToken)=> _studentRepository.Query().AsNoTracking().AllAsync(us=> us.Email != email,cancellationToken))
-                .WithMessage("Email já presente no banco");
-
             RuleFor(sr => sr.ResponsiblePhone)
                 .Must(rp => PhoneIsValid(rp))
                 .WithMessage("O formato do telefone deve ser do tipo : (xx) x?xxxx-xxxx");
