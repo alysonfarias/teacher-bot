@@ -10,5 +10,10 @@ namespace Hackathon.Infrastructure.Repositories.Base.Common
         public UserRepository(ApplicationContext context) : base(context)
         {
         }
+
+        public Task<UserEntity> GetUserByName(string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

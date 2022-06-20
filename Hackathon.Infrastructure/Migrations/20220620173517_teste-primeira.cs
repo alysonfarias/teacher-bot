@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hackathon.Infrastructure.Migrations
 {
-    public partial class teste_migrations2 : Migration
+    public partial class testeprimeira : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -284,6 +284,11 @@ namespace Hackathon.Infrastructure.Migrations
                     { 2, "Instructor" },
                     { 3, "Student" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Admins",
+                columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "UpdatedAt", "UserRoleId", "Username" },
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@api.com", "Admin Root Application", "AQAAAAEAAAPoAAAAEGIhyFORPBbJ0j3ka/dX2eivVZUJto+wEPRT/60160DImCbNtCTzEZ5IDp+MPoJs1g==", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Activities_ClassRoomId",

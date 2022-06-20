@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackathon.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220618181938_teste_migrations2")]
-    partial class teste_migrations2
+    [Migration("20220620173517_teste-primeira")]
+    partial class testeprimeira
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,20 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasIndex("UserRoleId");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@api.com",
+                            Name = "Admin Root Application",
+                            Password = "AQAAAAEAAAPoAAAAEGIhyFORPBbJ0j3ka/dX2eivVZUJto+wEPRT/60160DImCbNtCTzEZ5IDp+MPoJs1g==",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserRoleId = 1,
+                            Username = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.Activity", b =>

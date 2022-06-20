@@ -9,6 +9,7 @@ using Hackathon.Infrastructure.Context;
 using Hackathon.Application.Interfaces;
 using Hackathon.Application.Services.Login;
 using Hackathon.Infrastructure.UnitOfWork;
+using Hackathon.Domain;
 
 namespace Hackathon.API.Config
 {
@@ -20,8 +21,9 @@ namespace Hackathon.API.Config
             services.AddScoped<ApplicationContext>();
 
             //services
-            services.AddScoped<ILoginService<Student>, LoginService<Student>();
-            services.AddScoped<ILoginService<Instructor>, LoginService<Instructor>();
+            services.AddScoped<ILoginService<Student>, LoginService<Student>>();
+            services.AddScoped<ILoginService<Instructor>, LoginService<Instructor>>();
+            services.AddScoped<ILoginService<Admin>, LoginService<Admin>>();
 
             //auth
             services.AddScoped<IAuthService, AuthService>();
@@ -33,6 +35,7 @@ namespace Hackathon.API.Config
 
             services.AddScoped<IUserRepository<Student>,StudentRepository>();
             services.AddScoped<IUserRepository<Instructor>,InstructorRepository>();
+            services.AddScoped<IUserRepository<Admin>,AdminRepository>();
 
             services.AddFluentValidation(); 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

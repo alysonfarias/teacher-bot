@@ -1,11 +1,12 @@
 ﻿//using Hackathon.Domain.Core.Common;
 //using Hackathon.Domain.Models;
+//using Hackathon.Infrastructure.Mappings.Base;
 //using Microsoft.EntityFrameworkCore;
 //using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 //namespace Hackathon.Infrastructure.Mappings
 //{
-//    public class StudentMapping : UserMapping<Student>
+//    public class StudentMapping : BaseUserMap<Student>
 //    {
 //        public StudentMapping() : base("tb_student")
 //        {
@@ -30,6 +31,11 @@
 //                        x.Property(p => p.StudentId).HasColumnName("id_student").IsRequired();
 //                    }
 //                ); ;
+//        }
+
+//        protected override void ConfigureOtherUserProperties(EntityTypeBuilder<Student> builder)
+//        {
+//            throw new NotImplementedException();
 //        }
 //    }
 //}
