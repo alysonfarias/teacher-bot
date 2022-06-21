@@ -3,10 +3,8 @@ using Hackathon.Application.DTOS.Instructor;
 using Hackathon.Application.Validators.Base;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Interfaces;
-using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Models;
 using Hackathon.Domain.Models.Enumerations;
-using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Application.Validators
 {
