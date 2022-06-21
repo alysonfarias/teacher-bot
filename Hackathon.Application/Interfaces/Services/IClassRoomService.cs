@@ -6,5 +6,6 @@ namespace Hackathon.Application.Interfaces.Services
     {
         Task<ClassRoomResponse> RegisterAsync(ClassRoomRequest classRoomRequest, int id);
         Task<ClassRoomResponse> UpdateAsync(int id, ClassRoomRequest classRoomRequest);
+        Task<ClassRoomResponse> DeleteAsync(int id);
     }
 }

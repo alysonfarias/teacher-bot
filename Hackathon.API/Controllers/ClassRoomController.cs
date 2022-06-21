@@ -39,5 +39,14 @@ namespace Hackathon.API.Controllers
             var classRoomResponse = await _classRoomService.UpdateAsync(id,classRoomRequest);
             return Ok(classRoomResponse);
         }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<ActionResult<ClassRoomResponse>> DeleteAsync(int id)
+        {
+            var classRoomResponse = await _classRoomService.DeleteAsync(id);
+            return Ok(classRoomResponse);
+        }
+    
     }
 }

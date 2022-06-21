@@ -68,5 +68,20 @@ namespace Hackathon.Application.Services
             await _unitOfWork.CommitAsync();
             return _mapper.Map<ClassRoomResponse>(classRoom);
         }
+
+        public async Task<ClassRoomResponse> DeleteAsync(int id)
+        {
+            var classRoom = await _classRoomRepository.GetByIdAsync(id);
+            if (classRoom is null)
+                throw new NotFoundException("O id informado não existe");
+        
+            if(classRoom.InstructorId != _authService.AuthUser.Id)
+                throw new NotAuthorizedException();
+
+            var classRoomDeleted = await _classRoomRepository.RemoveAsync(id);
+            await _unitOfWork.CommitAsync();
+            
+            return _mapper.Map<ClassRoomResponse>(classRoom);  
+        }
     }
 }
