@@ -34,25 +34,37 @@ namespace Hackathon.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getDate()");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getDate()");
 
                     b.Property<int>("UserRoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
@@ -68,7 +80,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@api.com",
                             Name = "Admin Root Application",
-                            Password = "AQAAAAEAAAPoAAAAEGIhyFORPBbJ0j3ka/dX2eivVZUJto+wEPRT/60160DImCbNtCTzEZ5IDp+MPoJs1g==",
+                            Password = "AQAAAAEAAAPoAAAAEBsWc/D0DLfDaKsfCB071/SwulSKmgw4Dj8v91kPIAmY8ZHOqJ6r0IAOw7karceldQ==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 1,
                             Username = "admin"
@@ -332,7 +344,7 @@ namespace Hackathon.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -377,6 +389,21 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasIndex("UserRoleId");
 
                     b.ToTable("Instructors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "instru@api.com",
+                            Name = "kleber",
+                            Password = "AQAAAAEAAAPoAAAAEB2sb8GjXx93/9QBcmdxjU7yhBXYzE+lqkWUp9knzVM3q2YuUbVTv2mBi0zIWJsltA==",
+                            SubjectId = 1,
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserRoleId = 2,
+                            Username = "instru"
+                        });
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.Student", b =>
@@ -388,7 +415,7 @@ namespace Hackathon.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -432,6 +459,20 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasIndex("UserRoleId");
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "instru@api.com",
+                            Name = "kleber",
+                            Password = "AQAAAAEAAAPoAAAAEEit5xra9oOk4sUogpx3nmyChaSJJ1y9kUpa/89kg1sbLTvUFJ+ZY66Wl59mw4mpTg==",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserRoleId = 3,
+                            Username = "instru"
+                        });
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.StudentClassRoom", b =>
