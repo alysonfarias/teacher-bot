@@ -11,6 +11,7 @@ namespace Hackathon.API.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = Roles.Instructor)]
+    [Authorize(Roles = Roles.Admin)]
     public class ClassRoomController : ControllerBase
     {
         public IClassRoomService _classRoomService { get; set; }
@@ -58,10 +59,18 @@ namespace Hackathon.API.Controllers
         }
     
         [HttpPut]
-        [Route("{id}/activity/{id}")]
-        public async Task<ActionResult<ActivityResponse>> UpdateActivityAsync(int id,[FromBody] ActivityRequest activityRequest)
+        [Route("{classRoomId:int}/activity/{activityId:int}")]
+        public async Task<ActionResult<ActivityResponse>> UpdateActivityAsync(int classRoomId,int activityId,[FromBody] ActivityRequest activityRequest)
         {
-            ActivityResponse activityResponse = await _classRoomService.UpdateActivityAsync(id,_authService.AuthUser.Id,activityRequest);
+            var activityResponse = await _classRoomService.UpdateActivityAsync(classRoomId,activityId,_authService.AuthUser.Id,activityRequest);
+            return Ok(activityResponse);
+        }
+
+        [HttpDelete]
+        [Route("{classRoomId:int}/activity/{activityId:int}")]
+        public async Task<ActionResult<ActivityResponse>> DeleteActivityAsync(int classRoomId,int activityId)
+        {
+            var activityResponse = await _classRoomService.DeleteActivityAsync(classRoomId,activityId,_authService.AuthUser.Id);
             return Ok(activityResponse);
         }
 

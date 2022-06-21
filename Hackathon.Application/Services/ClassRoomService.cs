@@ -108,7 +108,7 @@ namespace Hackathon.Application.Services
 
         }
 
-        public async Task<ActivityResponse> UpdateActivityAsync(int classRoomId, int instructorId, ActivityRequest activityRequest)
+        public async Task<ActivityResponse> UpdateActivityAsync(int classRoomId,int activityId, int instructorId, ActivityRequest activityRequest)
         {
             var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
 
@@ -118,16 +118,40 @@ namespace Hackathon.Application.Services
             if(classRoom.InstructorId != instructorId)
                 throw new NotAuthorizedException();
             
-            if( ! classRoom.Activities.Any(act => act.Id == activityRequest.Id))
+            var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityId);
+            if( activity is null)
                 throw new NotFoundException("O id da atividade informado não existe");
                 
             //Validar request
-            var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityRequest.Id);
 
             _mapper.Map(activity,activityRequest);
 
             await _unitOfWork.CommitAsync();
             return _mapper.Map<ActivityResponse>(activity);
+        }
+
+        public async Task<ActivityResponse> DeleteActivityAsync(int classRoomId, int activityId, int instructorId)
+        {
+            var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
+
+            if(classRoom is null)
+                throw new NotFoundException("O id da sala informado não existe");
+            
+            if(classRoom.InstructorId != instructorId)
+                throw new NotAuthorizedException();
+
+            
+            var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityId);
+            if( activity is null)
+                throw new NotFoundException("O id da atividade informado não existe");
+
+            
+            var listActivities = classRoom.Activities.ToList();
+            listActivities.Remove(activity);
+            classRoom.Activities = listActivities;
+
+            await _unitOfWork.CommitAsync();
+            return _mapper.Map<ActivityResponse>(activity);            
         }
     }
 }
