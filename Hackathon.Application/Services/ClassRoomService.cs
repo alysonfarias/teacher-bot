@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.CustomExceptions;
+using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Domain.Interfaces;
@@ -82,6 +83,26 @@ namespace Hackathon.Application.Services
             await _unitOfWork.CommitAsync();
             
             return _mapper.Map<ClassRoomResponse>(classRoom);  
+        }
+
+        public async Task<ActivityResponse> RegisterActivityAsync(int classRoomId, int instructorId, ActivityRequest activityRequest)
+        {
+            var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
+
+            if(classRoom.InstructorId != instructorId)
+                throw new NotAuthorizedException();
+
+            //Validar request
+
+            var activity = _mapper.Map<Activity>(activityRequest);
+            var listActivities = classRoom.Activities.ToList();
+            listActivities.Add(activity);
+
+            classRoom.Activities = listActivities;
+            await _unitOfWork.CommitAsync();
+
+            return _mapper.Map<ActivityResponse>(activity);
+
         }
     }
 }

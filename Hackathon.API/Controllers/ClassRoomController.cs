@@ -1,3 +1,4 @@
+using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Roles;
@@ -46,6 +47,14 @@ namespace Hackathon.API.Controllers
         {
             var classRoomResponse = await _classRoomService.DeleteAsync(id);
             return Ok(classRoomResponse);
+        }
+
+        [HttpPost]
+        [Route("{id}/activity")]
+        public async Task<ActionResult<ActivityResponse>> RegisterActivityAsync(int id ,[FromBody] ActivityRequest activityRequest)
+        {
+            var activityResponse = await _classRoomService.RegisterActivityAsync(id,_authService.AuthUser.Id,activityRequest);
+            return Ok(activityRequest);
         }
     
     }
