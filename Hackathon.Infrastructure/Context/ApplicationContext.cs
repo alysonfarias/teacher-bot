@@ -61,11 +61,28 @@ namespace Hackathon.Infrastructure.Context
             {
                 Id = 1,
                 Username = "instru",
+                SubjectId = 1,
                 Password = PasswordHasher.Hash("123@instru"),
                 Email = "instru@api.com",
                 Name = "kleber",
                 CreatedAt = DateTime.ParseExact("27/05/2022", "dd/MM/yyyy", CultureInfo.InvariantCulture),
-                UserRoleId = UserRole.Admin.Id
+                UserRoleId = UserRole.Instructor.Id,
+                BirthDate = DateTime.ParseExact("12/05/2001", "dd/MM/yyyy", CultureInfo.InvariantCulture)
+
+            });
+
+            modelBuilder
+            .Entity<Student>()
+            .HasData(new Student
+            {
+                Id = 1,
+                Username = "instru",
+                Password = PasswordHasher.Hash("123@instru"),
+                Email = "instru@api.com",
+                Name = "kleber",
+                CreatedAt = DateTime.ParseExact("27/05/2022", "dd/MM/yyyy", CultureInfo.InvariantCulture),
+                UserRoleId = UserRole.Student.Id,
+                BirthDate = DateTime.ParseExact("12/05/2001", "dd/MM/yyyy", CultureInfo.InvariantCulture),
             });
 
         }

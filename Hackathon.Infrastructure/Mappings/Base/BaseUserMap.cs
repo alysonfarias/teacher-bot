@@ -14,7 +14,7 @@ namespace Hackathon.Infrastructure.Mappings.Base
             builder.Property(us => us.Username).IsRequired().HasMaxLength(200);
             builder.Property(us => us.Email).IsRequired().HasMaxLength(200);              
             builder.Property(us => us.Password).IsRequired().HasMaxLength(200);
-            builder.Property(us => us.BirthDate).HasColumnType("datetime"); 
+            //builder.Property(us => us.BirthDate).HasColumnType("datetime2"); 
 
             builder
                 .HasOne(us => us.UserRole)

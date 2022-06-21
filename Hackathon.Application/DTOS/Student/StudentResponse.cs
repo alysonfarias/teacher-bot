@@ -5,7 +5,7 @@ namespace Hackathon.Application.DTOS.Student
 {
     public class StudentResponse : UserResponse
     {
-        public IEnumerable<string> ResponsiblePhones{ get; set; }
+        public string ResponsiblePhone { get; set; }
         public IEnumerable<ClassRoomResponse> ClassRooms { get; set; }
     }
 }
