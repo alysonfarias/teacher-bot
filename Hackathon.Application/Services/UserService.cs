@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.DTOS.Common;
+using Hackathon.Application.DTOS.Enumerations;
+using Hackathon.Application.Interfaces;
 using Hackathon.Application.Params;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Interfaces;
@@ -11,7 +13,7 @@ using Hackathon.Infrastructure.Utils;
 
 namespace Hackathon.Application.Services
 {
-    public abstract class UserService<T,Req,Res>
+    public abstract class UserService<T,Req,Res> : IUserService<T,Req,Res>
     where T: User
     where Req : UserRequest
     where Res: UserResponse
@@ -58,9 +60,9 @@ namespace Hackathon.Application.Services
             return _mapper.Map<Res>(await _userRepository.GetByIdAsync(id));
         }
 
-        public IEnumerable<Res> GetUserRoles()
+        public IEnumerable<UserRoleResponse> GetUserRoles()
         {
-            return _mapper.Map<IEnumerable<Res>>(Enumeration.GetAll<UserRole>());
+            return _mapper.Map<IEnumerable<UserRoleResponse>>(Enumeration.GetAll<UserRole>());
         }
 
         public async Task<Res> RemoveAsync(int id)
