@@ -57,5 +57,14 @@ namespace Hackathon.API.Controllers
             return Ok(activityRequest);
         }
     
+        [HttpPut]
+        [Route("{id}/activity/{id}")]
+        public async Task<ActionResult<ActivityResponse>> UpdateActivityAsync(int id,[FromBody] ActivityRequest activityRequest)
+        {
+            ActivityResponse activityResponse = await _classRoomService.UpdateActivityAsync(id,_authService.AuthUser.Id,activityRequest);
+            return Ok(activityResponse);
+        }
+
+
     }
 }

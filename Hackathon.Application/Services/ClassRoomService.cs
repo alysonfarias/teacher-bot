@@ -89,6 +89,9 @@ namespace Hackathon.Application.Services
         {
             var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
 
+            if(classRoom is null)
+                throw new NotFoundException("O id informado não existe");
+
             if(classRoom.InstructorId != instructorId)
                 throw new NotAuthorizedException();
 
@@ -103,6 +106,28 @@ namespace Hackathon.Application.Services
 
             return _mapper.Map<ActivityResponse>(activity);
 
+        }
+
+        public async Task<ActivityResponse> UpdateActivityAsync(int classRoomId, int instructorId, ActivityRequest activityRequest)
+        {
+            var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
+
+            if(classRoom is null)
+                throw new NotFoundException("O id da sala informado não existe");
+
+            if(classRoom.InstructorId != instructorId)
+                throw new NotAuthorizedException();
+            
+            if( ! classRoom.Activities.Any(act => act.Id == activityRequest.Id))
+                throw new NotFoundException("O id da atividade informado não existe");
+                
+            //Validar request
+            var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityRequest.Id);
+
+            _mapper.Map(activity,activityRequest);
+
+            await _unitOfWork.CommitAsync();
+            return _mapper.Map<ActivityResponse>(activity);
         }
     }
 }
