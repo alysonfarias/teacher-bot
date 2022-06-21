@@ -13,7 +13,6 @@ namespace Hackathon.API.Controllers
     public class ClassRoomController : ControllerBase
     {
         public IClassRoomService _classRoomService { get; set; }
-
         public IAuthService _authService {get;set;}
 
         public ClassRoomController
@@ -30,6 +29,14 @@ namespace Hackathon.API.Controllers
         public async Task<ActionResult<ClassRoomResponse>> RegisterAsync([FromBody] ClassRoomRequest classRoomRequest)
         {
             var classRoomResponse = await _classRoomService.RegisterAsync(classRoomRequest,_authService.AuthUser.Id);
+            return Ok(classRoomResponse);
+        }
+    
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<ActionResult<ClassRoomResponse>> UpdateAsync(int id ,[FromBody] ClassRoomRequest classRoomRequest)
+        {
+            var classRoomResponse = await _classRoomService.UpdateAsync(id,classRoomRequest);
             return Ok(classRoomResponse);
         }
     }
