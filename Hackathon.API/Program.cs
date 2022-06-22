@@ -4,6 +4,7 @@ using Hackathon.Application.Mappers;
 using Hackathon.Application.Options;
 using Hackathon.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 //builder
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,8 @@ builder.Services.SolveAuthConfig(builder.Configuration);
 builder.Services.AddDependencyInjection();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureSwagger();
 builder.Services.AddCors();

@@ -14,7 +14,7 @@ namespace Hackathon.Application.Mappers
             CreateMap<InstructorRequest,Instructor>();
             CreateMap<StudentRequest,Student>();
             CreateMap<ActivityRequest,Activity>();
-            CreateMap<ClassRoomRequest,ClassRoom>();
+            CreateMap<ClassRoomRequest, ClassRoom>();
         }
     }
 }
