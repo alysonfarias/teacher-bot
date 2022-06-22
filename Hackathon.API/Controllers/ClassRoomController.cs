@@ -75,15 +75,5 @@ namespace Hackathon.API.Controllers
             return Ok(activityResponse);
         }
 
-        [HttpPost]
-        [Route("{classRoomId:int}/activity/{activityId:int}/send-activity")]
-        [Authorize(Roles = Roles.Student)] 
-
-        public async Task<ActionResult> SendActivity(int classRoomId,int activityId, [FromBody] ArquiveRequest arquiveRequest)
-        {
-            await _classRoomService.SendActivity(classRoomId, activityId, _authService.AuthUser.Id, arquiveRequest);
-            return NoContent();
-        }
-
     }
 }

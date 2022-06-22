@@ -155,15 +155,5 @@ namespace Hackathon.Application.Services
             return _mapper.Map<ActivityResponse>(activity);            
         }
 
-        public async Task SendActivity(int classRoomId, int activityId, int studentId, ArquiveRequest arquiveRequest)
-        {
-            //Validacoes de regra de negocio
-            //Validar a request
-
-            await _classRoomRepository.SendActivity(activityId,studentId,arquiveRequest.DataBase64);
-            await _unitOfWork.CommitAsync();
-            //Enviar o email informando que o aluno respondeu a atividade
-        
-        }
     }
 }

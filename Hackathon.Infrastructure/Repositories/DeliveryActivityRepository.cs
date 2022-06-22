@@ -5,10 +5,10 @@ using Hackathon.Infrastructure.Repositories.Base;
 
 namespace Hackathon.Infrastructure.Repositories
 {
-    public class ClassRoomRepository : BaseRepository<ClassRoom>, IClassRoomRepository
+    public class DeliveryActivityRepository : BaseRepository<DeliveryActivity>, IDeliveryActivityRepository
     {
-        public ClassRoomRepository(ApplicationContext context) : base(context)
-        {}
-
+        public DeliveryActivityRepository(ApplicationContext context) : base(context)
+        {
+        }
     }
 }
