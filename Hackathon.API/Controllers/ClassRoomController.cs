@@ -10,7 +10,7 @@ namespace Hackathon.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = Roles.Instructor)]
+    [Authorize(Roles = $"{Roles.Instructor}, {Roles.Admin}" )]
     public class ClassRoomController : ControllerBase
     {
         public IClassRoomService _classRoomService { get; set; }
@@ -51,7 +51,7 @@ namespace Hackathon.API.Controllers
 
         [HttpPost]
         [Route("{id}/activity")]
-        public async Task<ActionResult<ActivityResponse>> RegisterActivityAsync(int id ,[FromBody] ActivityRequest activityRequest, [FromForm] List<IFormFile> files)
+        public async Task<ActionResult<ActivityResponse>> RegisterActivityAsync(int id ,[FromBody] ActivityRequest activityRequest)
         {
             //foreach (var file in files)
             //{
