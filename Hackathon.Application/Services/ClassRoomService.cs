@@ -15,6 +15,7 @@ namespace Hackathon.Application.Services
     {
         public IClassRoomRepository _classRoomRepository { get; set; }
         public IValidator<ClassRoomRequest> _classRoomValidator { get; set; }
+        public IValidator<ActivityRequest> _activityValidator { get; set; }
         public IMapper _mapper { get; set; }
         public IUnitOfWork _unitOfWork { get; set; }
         public IAuthService _authService {get;set;}
@@ -23,6 +24,7 @@ namespace Hackathon.Application.Services
         (
             IClassRoomRepository classRoomRepository,
             IValidator<ClassRoomRequest> classRoomValidator,
+            IValidator<ActivityRequest> activityValidator,
             IMapper mapper,
             IUnitOfWork unitOfWork,
             IAuthService authService 
@@ -33,6 +35,7 @@ namespace Hackathon.Application.Services
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _authService = authService;
+            _activityValidator = activityValidator;
         }
 
         public async Task<ClassRoomResponse> RegisterAsync(ClassRoomRequest classRoomRequest, int intructorId)
@@ -97,6 +100,9 @@ namespace Hackathon.Application.Services
                 throw new NotAuthorizedException();
 
             //Validar request
+            var validationResult = await _activityValidator.ValidateAsync(activityRequest);
+            if (!validationResult.IsValid)
+                throw new BadRequestException(validationResult);
 
             var activity = _mapper.Map<Activity>(activityRequest);
             var listActivities = classRoom.Activities.ToList();
@@ -122,8 +128,11 @@ namespace Hackathon.Application.Services
             var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityId);
             if( activity is null)
                 throw new NotFoundException("O id da atividade informado não existe");
-                
+
             //Validar request
+            var validationResult = await _activityValidator.ValidateAsync(activityRequest);
+            if (!validationResult.IsValid)
+                throw new BadRequestException(validationResult);
 
             _mapper.Map(activity,activityRequest);
 
