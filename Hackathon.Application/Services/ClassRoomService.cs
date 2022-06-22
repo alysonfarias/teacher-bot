@@ -8,6 +8,10 @@ using Hackathon.Application.Params;
 using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Interfaces.Repositories;
 using Hackathon.Domain.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace Hackathon.Application.Services
 {
@@ -19,7 +23,8 @@ namespace Hackathon.Application.Services
         public IMapper _mapper { get; set; }
         public IUnitOfWork _unitOfWork { get; set; }
         public IAuthService _authService {get;set;}
-        
+
+
         public ClassRoomService
         (
             IClassRoomRepository classRoomRepository,
@@ -35,6 +40,12 @@ namespace Hackathon.Application.Services
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _authService = authService;
+
+            _classRoomRepository.AddPreQuery(x => x
+            .Include(x => x.Activities)
+            .ThenInclude(x => x.Arquives)
+            );
+
             _activityValidator = activityValidator;
         }
 
@@ -109,11 +120,99 @@ namespace Hackathon.Application.Services
             listActivities.Add(activity);
 
             classRoom.Activities = listActivities;
+
+            bool isSucess = await SendEmailToStudents(activity, classRoom);
+
             await _unitOfWork.CommitAsync();
 
             return _mapper.Map<ActivityResponse>(activity);
 
         }
+
+        private async Task<bool> SendEmailToStudents(Activity activity, ClassRoom classRoom)
+        {
+            string hostEmail = "wesley_play.tj@live.com";
+            string hostName = "wesley";
+            //TODO: verificar um jeito de colocar isso na user secrets
+            var apiKey = "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";
+
+            var client = new SendGridClient(apiKey);
+
+
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress(hostEmail, hostName),
+                Subject = $"Você recebeu uma nova atividade [{activity.Title}]",
+                PlainTextContent = $"Sala {classRoom.Name} | {classRoom.Id}  há uma nova uma atividade {activity.Title}, acesse o sistema TeacherBot e tenha acesso"
+            };
+
+            
+            msg.AddTo(new EmailAddress("ramos.alysonfarias@gmail.com", "Alyson"));
+            //msg.AddTo(new EmailAddress("alyson.2020130399@unicap.br", "Kelber"));
+
+            var response = await client.SendEmailAsync(msg);
+
+            // A success status code means SendGrid received the email request and will process it.
+            // Errors can still occur when SendGrid tries to send the email. 
+            // If email is not received, use this URL to debug: https://app.sendgrid.com/email_activity 
+            return response.IsSuccessStatusCode ? true : false;
+        }
+
+        public async Task<ActivityResponse> RegisterFileActivity(int classRoomId, int activityId, int instructorId, List<IFormFile> files)
+        {
+            var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
+
+            if (classRoom is null)
+                throw new NotFoundException("O id informado não existe");
+
+            if (classRoom.InstructorId != instructorId)
+                throw new NotAuthorizedException();
+
+            var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityId);
+            if (activity is null)
+                throw new NotFoundException("O id da atividade informado não existe");
+
+            activity.Arquives = GetBase64FromFiles(activity.Arquives.ToList(), files, activityId);
+
+            await _unitOfWork.CommitAsync();
+            return _mapper.Map<ActivityResponse>(activity);
+        }
+
+        private List<Arquive> GetBase64FromFiles (List<Arquive> initialFiles, List<IFormFile> filesToBeAdd, int activityId)
+        {
+            int maxMemorySizePerFileBytes = 1048576; // 1mb
+            var temporaryArquivesList = initialFiles;
+
+            foreach (var file in filesToBeAdd)
+            {
+                if (file.Length > 0 && file.Length <= maxMemorySizePerFileBytes)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        string fileB64 = Convert.ToBase64String(fileBytes);
+
+                        var arquive = new Arquive
+                        {
+                            ActivityId = activityId,
+                            CreatedAt = DateTime.Now,
+                            UpdatedAt = DateTime.Now,
+                            FileTypeId = 1,
+                            DataBase64 = fileB64
+                        };
+
+                        temporaryArquivesList.Add(arquive);
+                    }
+                } else if(file.Length > maxMemorySizePerFileBytes)
+                {
+                    throw new BadRequestException(nameof(file), $"Image size limit is {Utils.ToSize(maxMemorySizePerFileBytes, Utils.SizeUnits.MB)} {Utils.SizeUnits.MB}");
+                }
+            }
+            return temporaryArquivesList;
+        }
+
+
 
         public async Task<ActivityResponse> UpdateActivityAsync(int classRoomId,int activityId, int instructorId, ActivityRequest activityRequest)
         {
