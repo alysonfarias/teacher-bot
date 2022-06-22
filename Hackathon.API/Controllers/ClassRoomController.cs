@@ -1,4 +1,5 @@
 using Hackathon.Application.DTOS.Activity;
+using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Params;
@@ -93,7 +94,6 @@ namespace Hackathon.API.Controllers
             var activityResponse = await _classRoomService.DeleteActivityAsync(classRoomId,activityId,_authService.AuthUser.Id);
             return Ok(activityResponse);
         }
-
 
     }
 }

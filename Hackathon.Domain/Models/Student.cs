@@ -6,5 +6,6 @@ namespace Hackathon.Domain.Models
     {
         public string ResponsiblePhone { get; set; }
         public IEnumerable<ClassRoom> ClassRooms { get; set; }
+        public IEnumerable<Activity> ActivitiesDone { get; set; }
     }
 }

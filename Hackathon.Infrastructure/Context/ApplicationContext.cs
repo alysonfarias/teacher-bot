@@ -19,6 +19,7 @@ namespace Hackathon.Infrastructure.Context
         public DbSet<ClassRoom> ClassRooms { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Arquive> Arquives { get; set; }
+        public DbSet<DeliveryActivity> DeliveryActivity { get; set; }
         public DbSet<FileType> FileTypes { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }

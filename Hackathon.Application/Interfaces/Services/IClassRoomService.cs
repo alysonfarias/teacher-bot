@@ -1,4 +1,5 @@
 using Hackathon.Application.DTOS.Activity;
+using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Microsoft.AspNetCore.Http;
 using Hackathon.Application.Params;

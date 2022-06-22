@@ -30,6 +30,8 @@ namespace Hackathon.API.Config
             //services
             services.AddScoped<ILoginService<Student>, LoginService<Student>>();
             services.AddScoped<ILoginService<Instructor>, LoginService<Instructor>>();
+            services.AddScoped<IDeliveryActivityService,DeliveryActivityService>();
+            services.AddScoped<IDeliveryActivityRepository,DeliveryActivityRepository>();
             services.AddScoped<ILoginService<Admin>, LoginService<Admin>>();
             services.AddScoped<IClassRoomService,ClassRoomService>();
             services.AddScoped<IClassRoomRepository,ClassRoomRepository>();

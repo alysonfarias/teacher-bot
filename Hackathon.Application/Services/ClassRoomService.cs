@@ -2,6 +2,7 @@ using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Activity;
+using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Params;

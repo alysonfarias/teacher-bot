@@ -1,5 +1,6 @@
 using Hackathon.Domain.Models;
 using Hackathon.Infrastructure.Mappings.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hackathon.Infrastructure.Mappings
@@ -17,6 +18,7 @@ namespace Hackathon.Infrastructure.Mappings
                 .WithOne(at => at.Activity)
                 .HasForeignKey(aq=>aq.ActivityId)
                 .IsRequired();
+            
         }
     }
 }

@@ -3,7 +3,8 @@ using Hackathon.Domain.Models;
 
 namespace Hackathon.Domain.Interfaces.Repositories
 {
-    public interface IClassRoomRepository : IBaseRepository<ClassRoom>
+    public interface IDeliveryActivityRepository : IBaseRepository<DeliveryActivity>
     {
+         
     }
 }
