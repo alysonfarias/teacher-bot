@@ -27,5 +27,7 @@ namespace Hackathon.API.Controllers
             await _classRoomParticipantsService.RegisterParticipant(classRoomId, _authService.AuthUser.Id);
             return Ok();
         }
+
+
     }
 }

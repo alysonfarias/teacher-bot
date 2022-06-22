@@ -17,10 +17,12 @@ namespace Hackathon.Application.Services
 
         public ClassRoomParticipantsService(IClassRoomParticipantsRepository classRoomParticipantsRepository,
             IStudentRepository studentRepository,
+            IClassRoomRepository classRoom,
             IMapper mapper,
             IUnitOfWork unitOfWork)
         {
             _classRoomParticipantsRepository = classRoomParticipantsRepository;
+            _classRoomRepository = classRoom;
             _studentRepository = studentRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
@@ -28,8 +30,8 @@ namespace Hackathon.Application.Services
 
         public async Task RegisterParticipant(int classRoomId, int studentId)
         {
-            var classRoom = _classRoomRepository.GetByIdAsync(classRoomId);
-            if(classRoom is  null) 
+            var classRoom = await _classRoomRepository.GetByIdAsync(classRoomId);
+            if(classRoom is null) 
                 throw new NotFoundException("Sala não encontrada");
 
             var classRoomParticipant = new ClassRoomParticipants
