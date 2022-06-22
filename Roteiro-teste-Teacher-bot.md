@@ -1,38 +1,50 @@
 # Roteiro de Testes
 
-- LOGIN 
+<h2>
+  Teacher Bot
+</h2>
+
+<p align= "center">
+  <a href="#LOGIN">Login</a> - 
+  <a href="#ClassRoom">ClassRoom</a> -
+  <a href="#Instructor">Instructor</a> - 
+  <a href="#Student">Student</a> 
+</p>
+
+# <h3 id ="LOGIN">LOGIN</h3>  
+
   - Tentar acessar uma rota sem estar logado 
   - Validar token nulo 
-  - Tentar fazer login com um username n„o cadastrado. 
-  - Validar username n„o cadastrado 
-  - Tentar entrar com username v·lido porÈm senha incorreta.
-  - Validar senha inv·lida
+  - Tentar fazer login com um username n√£o cadastrado. 
+  - Validar username n√£o cadastrado 
+  - Tentar entrar com username v√°lido por√©m senha incorreta.
+  - Validar senha inv√°lida
 
 
-  - Entrar com o usu·rio admin:
+  - Entrar com o usu√°rio admin:
   ```json
   {
     "username": "admin",
     "password": "123@admin"
   }
-
-    - Entrar com o usu·rio Instructor:
+  ```
+  - Entrar com o usu√°rio Instructor:
   ```json
   {
     "username": "instru",
     "password": "123@instru"
   }
-
-    - Entrar com o usu·rio Student:
+  ```
+  - Entrar com o usu√°rio Student:
   ```json
   {
     "username": "instru",
     "password": "123@instru"
   }
-
+   ```
   <------------------------------------------------------------------------>
 
-  - ClassRoom
+ # <h3 id ="ClassRoom"> ClassRoom</h3>
 
   - CREATE
     - Adicionar Nullo:
@@ -41,6 +53,7 @@
         "name": "",
         "description": "teste 01"
       }
+      
     ```
     ```json
       {
@@ -53,7 +66,7 @@
     - Passar valor invalido 
     - tentar passar valor nulo
 
-      ```json
+    ```json
       {
       "title": "string",
       "description": "string",
@@ -65,24 +78,23 @@
         }
       ]
       }
-    ```
+     ```
 
   - UPDATE
-    - Validar ao editar um ClassRoom com ID inv·lido
+    - Validar ao editar um ClassRoom com ID inv√°lido
     - Tentar Editar passando nulo
-    - N„o permitir salvar valor invalido ou nulo
+    - N√£o permitir salvar valor invalido ou nulo
 
     ```json
       {
         "name": "teste 03",
         "description": "teste 03"
-      }
-    
+      }  
     ```
 
-    - Validar ao editar um Activity com ID inv·lido 
+    - Validar ao editar um Activity com ID inv√°lido 
     - Tentar Editar passando nulo
-    - N„o permitir salvar valor invalido ou nulo
+    - N√£o permitir salvar valor invalido ou nulo
 
     ```json
       {
@@ -95,8 +107,7 @@
               "dataBase64": "string"
             }
           ]
-      }
-    
+      }  
     ```
     
   - GET
@@ -107,28 +118,28 @@
   - DELETE
 
      ClassRoom
-    - Validar ao remover um Id ClassRoom inv·lido
+    - Validar ao remover um Id ClassRoom inv√°lido
     - Remover  
 
     Activity
-    - Validar ao remover um Id ClassRoom inv·lido
-    - Validar ao remover um Id Activity inv·lido
+    - Validar ao remover um Id ClassRoom inv√°lido
+    - Validar ao remover um Id Activity inv√°lido
     - Remover 
 
   <------------------------------------------------------------------------> 
 
-  -Instructor
+  # <h3 id = "Instructor"> Instructor </h3>
 
   - GET
-        - Listar todos os Instructor 
-        - Listar Users Role
-        - Buscar por Id
+     - Listar todos os Instructor 
+     - Listar Users Role
+     - Buscar por Id
 
   - CREATE
 
       - passar valor nulo
       - passar valores duplicados
-      - colocar um username que j· existe
+      - colocar um username que j√° existe
       - validar formato de email correto
       - validar password
 
@@ -141,15 +152,14 @@
               "birthDate": "2022-06-22T22:05:26.439Z",
               "userRoleId": 0,
               "subjectId": 0
-          }
-    
-        ```
-     - UPDATE
+          } 
+      ```
+   - UPDATE
         
-      - Tentar editar com id que n„o existe
+      - Tentar editar com id que n√£o existe
       - passar valor nulo
       - passar valores duplicados
-      - colocar um username que j· existe
+      - colocar um username que j√° existe
       - validar formato de email correto
       - validar password
 
@@ -163,27 +173,25 @@
               "userRoleId": 0,
               "subjectId": 0
           }
-    
         ```
 
      - DELETE
 
-       - Validar ao remover um Id ClassRoom inv·lido
-       - Remover
+      - Validar ao remover um Id ClassRoom inv√°lido
+      - Remover
             
-  -Student
+  # <h3 id ="Student"> Student </h3>
 
-     - GET
-
-        - Listar todos os Instructor 
-        - Listar Users Role
-        - Buscar por Id
+   - GET
+      - Listar todos os Instructor 
+      - Listar Users Role
+      - Buscar por Id
 
      - CREATE
 
       - passar valor nulo
       - passar valores duplicados
-      - colocar um username que j· existe
+      - colocar um username que j√° existe
       - validar formato de email correto
       - validar password
       - Validar formato do telefone 
@@ -200,14 +208,13 @@
           }
         
         ``` 
-      - UPDATE
-
-          -Tentar editar com id que n„o existe
-          - passar valor nulo
-          - passar valores duplicados
-          - colocar um username que j· existe
-          - validar formato de email correto
-          - validar password
+     - UPDATE
+      - Tentar editar com id que n√£o existe
+      - passar valor nulo
+      - passar valores duplicados
+      - colocar um username que j√° existe
+      - validar formato de email correto
+      - validar password
 
        ```json
           {
@@ -224,8 +231,8 @@
 
      - DELETE
 
-       - Validar ao remover um Id ClassRoom inv·lido
-       - Remover
+      - Validar ao remover um Id ClassRoom inv√°lido
+      - Remover
 
 
     
