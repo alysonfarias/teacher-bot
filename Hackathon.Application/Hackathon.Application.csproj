@@ -8,17 +8,14 @@
   <ItemGroup>
     <Compile Remove="DTO\**" />
     <Compile Remove="Exceptions\**" />
-    <Compile Remove="Extensions\**" />
     <Compile Remove="Utils\**" />
     <Compile Remove="Validator\**" />
     <EmbeddedResource Remove="DTO\**" />
     <EmbeddedResource Remove="Exceptions\**" />
-    <EmbeddedResource Remove="Extensions\**" />
     <EmbeddedResource Remove="Utils\**" />
     <EmbeddedResource Remove="Validator\**" />
     <None Remove="DTO\**" />
     <None Remove="Exceptions\**" />
-    <None Remove="Extensions\**" />
     <None Remove="Utils\**" />
     <None Remove="Validator\**" />
   </ItemGroup>

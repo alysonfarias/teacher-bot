@@ -10,6 +10,7 @@ using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 using Hackathon.Infrastructure.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Application.Services
 {
@@ -18,23 +19,26 @@ namespace Hackathon.Application.Services
     where Req : UserRequest
     where Res: UserResponse
     {
-        private readonly IUserRepository<T> _userRepository;
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
+        protected readonly IUserRepository<T> _userRepository;
+        protected readonly IMapper _mapper;
+        protected readonly IUnitOfWork _unitOfWork;
         public IValidator<Req> _userRequestValidator {get; set;}
+        protected IAuthService _authService;
 
         public UserService
         (
             IUserRepository<T> userRepository, 
             IMapper mapper, 
             IUnitOfWork unitOfWork,
-            IValidator<Req> userRequestValidator
+            IValidator<Req> userRequestValidator,
+            IAuthService authService
         )
         {
             _userRequestValidator = userRequestValidator;
             _userRepository = userRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _authService = authService;
         }
 
         public async Task<Res> RegisterAsync(Req userRequest)

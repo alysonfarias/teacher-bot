@@ -3,6 +3,7 @@ using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Interfaces;
 using Hackathon.Application.Params;
 using Hackathon.Application.Roles;
+using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,12 @@ namespace Hackathon.API.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
+        private IAuthService _authService {get;set;}
 
-        public StudentController(IStudentService studentService)
+        public StudentController(IStudentService studentService, IAuthService authService)
         {
             _studentService = studentService;
+            _authService = authService;
         }
 
         [HttpGet]
@@ -55,6 +58,14 @@ namespace Hackathon.API.Controllers
         public IEnumerable<UserRoleResponse> GetUserRoles()
         {
             return _studentService.GetUserRoles();
+        }
+
+        [HttpPost]
+        [Route("register-for-classroom/{classRoomId:int}")]
+        public async Task<IActionResult> RegisterForClassRoom(int classRoomId)
+        {
+            await _studentService.RegisterForClassRoom(classRoomId, _authService.AuthUser.Id);
+            return Ok("Student added to the classroom");
         }
     }
 }

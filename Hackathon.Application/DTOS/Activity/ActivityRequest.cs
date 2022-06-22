@@ -3,7 +3,7 @@ using Hackathon.Application.DTOS.Common;
 
 namespace Hackathon.Application.DTOS.Activity
 {
-    public class ActivityRequest : RegisterViewModel
+    public class ActivityRequest
     {
         public string Title { get; set; }
         public string Description { get; set; }
