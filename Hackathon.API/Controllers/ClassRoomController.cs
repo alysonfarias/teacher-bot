@@ -1,6 +1,7 @@
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
+using Hackathon.Application.Params;
 using Hackathon.Application.Roles;
 using Hackathon.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +26,18 @@ namespace Hackathon.API.Controllers
         {
             _classRoomService = classRoomService;
             _authService = authService;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<ClassRoomResponse>> GetAsync([FromQuery] ClassRoomParams queryParams)
+        {
+            return await _classRoomService.GetAsync(queryParams);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ClassRoomResponse>> GetByIdAsync(int id)
+        {
+            return await _classRoomService.GetById(id);
         }
 
         [HttpPost]
