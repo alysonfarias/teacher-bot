@@ -16,7 +16,7 @@ namespace Hackathon.Infrastructure.Mappings
 
             builder
                 .HasMany(it => it.Classrooms)
-                .WithOne()
+                .WithOne(it => it.Instructor)
                 .HasForeignKey(cl => cl.InstructorId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);

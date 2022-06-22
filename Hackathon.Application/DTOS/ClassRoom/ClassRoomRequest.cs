@@ -6,5 +6,6 @@ namespace Hackathon.Application.DTOS.ClassRoom
     {
         public string Name { get; set; }
         public string Description { get; set; }
+
     }
 }

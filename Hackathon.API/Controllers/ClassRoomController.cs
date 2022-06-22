@@ -2,6 +2,7 @@ using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
+using Hackathon.Application.Params;
 using Hackathon.Application.Roles;
 using Hackathon.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -11,8 +12,7 @@ namespace Hackathon.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = Roles.Instructor)]
-    [Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = $"{Roles.Instructor}, {Roles.Admin}" )]
     public class ClassRoomController : ControllerBase
     {
         public IClassRoomService _classRoomService { get; set; }
@@ -26,6 +26,18 @@ namespace Hackathon.API.Controllers
         {
             _classRoomService = classRoomService;
             _authService = authService;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<ClassRoomResponse>> GetAsync([FromQuery] ClassRoomParams queryParams)
+        {
+            return await _classRoomService.GetAsync(queryParams);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ClassRoomResponse>> GetByIdAsync(int id)
+        {
+            return await _classRoomService.GetById(id);
         }
 
         [HttpPost]
@@ -57,6 +69,14 @@ namespace Hackathon.API.Controllers
         {
             var activityResponse = await _classRoomService.RegisterActivityAsync(id,_authService.AuthUser.Id,activityRequest);
             return Ok(activityRequest);
+        }
+        
+        [HttpPost]
+        [Route("{id}/sendfileactivity/{activityId:int}")]
+        public async Task<ActionResult> RegisterFileActivity(int id, [FromForm] List<IFormFile> files, int activityId)
+        {
+            var activityResponse = await _classRoomService.RegisterFileActivity(id, activityId, _authService.AuthUser.Id,files);
+            return Ok(activityResponse);
         }
     
         [HttpPut]

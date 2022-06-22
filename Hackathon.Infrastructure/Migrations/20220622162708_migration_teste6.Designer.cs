@@ -4,6 +4,7 @@ using Hackathon.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackathon.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220622162708_migration_teste6")]
+    partial class migration_teste6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@api.com",
                             Name = "Admin Root Application",
-                            Password = "AQAAAAEAAAPoAAAAEE+cSTTaqnn01FD/sKAm6OEr+hzuV1b6lnolVW1qAw1qooW+AZEAh4xAS+4B0A/ctA==",
+                            Password = "AQAAAAEAAAPoAAAAECBPzeAlLNoe3NwI/AF+QPam5pZmRzIYGgHHTHFy3XLW8DEKEM+b4jXLx7uAaWpKsQ==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 1,
                             Username = "admin"
@@ -394,7 +396,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "instru@api.com",
                             Name = "kleber",
-                            Password = "AQAAAAEAAAPoAAAAEIk4bJ6uc3LxVbxiFHJ0nptlzWxXiPItDbVovQEHimxhW77MCBjItW3v43+JUyPXng==",
+                            Password = "AQAAAAEAAAPoAAAAECcckFeqkJmA7kpUHIHsyvduwn/kA3TILokKVQzCU8xRRKYdi4WniRjZbO7gr0XNag==",
                             SubjectId = 1,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 2,
@@ -464,7 +466,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "instru@api.com",
                             Name = "kleber",
-                            Password = "AQAAAAEAAAPoAAAAEOwkt382ru5IKhxHycPreqr91dw/0gQzDG/2haVutBoRI/jrWlwlg8AP/XbDVWxYJg==",
+                            Password = "AQAAAAEAAAPoAAAAEFD+TB/4pu+0whZLSZFdXHaPt5t/pvyE9T3LLWUgbtkFqIDVXvKbGPfl5NaKFL549A==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 3,
                             Username = "instru"
