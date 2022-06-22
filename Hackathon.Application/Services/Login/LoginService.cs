@@ -1,4 +1,5 @@
-﻿using Hackathon.Application.DTOS.Auth;
+﻿using Hackathon.Application.CustomExceptions;
+using Hackathon.Application.DTOS.Auth;
 using Hackathon.Application.Interfaces;
 using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Models.Core;
@@ -28,10 +29,10 @@ namespace Hackathon.Application.Services.Login
             var user = await _userRepository.GetUserByName(model.Username);
 
             if (user is null)
-                throw new Exception("User not found");
+                throw new BadRequestException(nameof(model.Username), "User not found");
 
             if (!PasswordHasher.Verify(model.Password, user.Password))
-                throw new Exception("Invalid password");
+                throw new BadRequestException(nameof(model.Password), "Invalid password");
 
             return new List<Claim>()
                 {
