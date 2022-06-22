@@ -1,5 +1,6 @@
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
+using Microsoft.AspNetCore.Http;
 
 namespace Hackathon.Application.Interfaces.Services
 {
@@ -11,5 +12,6 @@ namespace Hackathon.Application.Interfaces.Services
         Task<ActivityResponse> RegisterActivityAsync(int classRoomId, int instructorId, ActivityRequest activityRequest);
         Task<ActivityResponse> UpdateActivityAsync(int classRoomId,int activityId, int instructorId, ActivityRequest activityRequest);
         Task<ActivityResponse> DeleteActivityAsync(int classRoomId, int activityId, int instructorId);
+        Task<ActivityResponse> RegisterFileActivity(int classRoomId, int activityId, int instructorId, List<IFormFile> files);
     }
 }

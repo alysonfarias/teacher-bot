@@ -1,4 +1,6 @@
 using AutoMapper;
+using Hackathon.Application.DTOS.Activity;
+using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Application.DTOS.Instructor;
@@ -19,6 +21,8 @@ namespace Hackathon.Application.Mappers
 
             CreateMap<UserRole, UserRoleResponse>();
             CreateMap<ClassRoom, ClassRoomResponse>();
+            CreateMap<Activity, ActivityResponse>();
+            CreateMap<Arquive, ArquiveResponse>();
         }
     }
 }
