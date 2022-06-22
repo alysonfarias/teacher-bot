@@ -14,6 +14,9 @@ using Hackathon.Application.Services;
 using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.DTOS.Instructor;
 using Hackathon.Application.Interfaces.Services;
+using Hackathon.Application.Validators.Base;
+using Hackathon.Application.Validators;
+
 
 namespace Hackathon.API.Config
 {
@@ -48,7 +51,11 @@ namespace Hackathon.API.Config
             services.AddScoped<IUserRepository<Instructor>,InstructorRepository>();
             services.AddScoped<IUserRepository<Admin>,AdminRepository>();
 
-            services.AddFluentValidation(); 
+            services.AddFluentValidation(fv =>
+            {
+                fv.AutomaticValidationEnabled = false;
+                fv.RegisterValidatorsFromAssemblyContaining<StudentValidator>();
+            }); 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;

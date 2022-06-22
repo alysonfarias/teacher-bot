@@ -2,6 +2,7 @@ using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Interfaces;
 using Hackathon.Application.Params;
+using Hackathon.Application.Roles;
 using Hackathon.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace Hackathon.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Roles = Roles.Student)]
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;

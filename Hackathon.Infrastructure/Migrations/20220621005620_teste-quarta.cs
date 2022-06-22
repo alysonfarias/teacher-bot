@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hackathon.Infrastructure.Migrations
 {
-    public partial class testeprimeira : Migration
+    public partial class testequarta : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,12 +54,12 @@ namespace Hackathon.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()"),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     UserRoleId = table.Column<int>(type: "int", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -88,7 +88,7 @@ namespace Hackathon.Infrastructure.Migrations
                     Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     UserRoleId = table.Column<int>(type: "int", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "datetime", nullable: false)
+                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,7 +121,7 @@ namespace Hackathon.Infrastructure.Migrations
                     Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     UserRoleId = table.Column<int>(type: "int", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "datetime", nullable: false)
+                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -288,7 +288,17 @@ namespace Hackathon.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Admins",
                 columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "UpdatedAt", "UserRoleId", "Username" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@api.com", "Admin Root Application", "AQAAAAEAAAPoAAAAEGIhyFORPBbJ0j3ka/dX2eivVZUJto+wEPRT/60160DImCbNtCTzEZ5IDp+MPoJs1g==", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "admin" });
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@api.com", "Admin Root Application", "AQAAAAEAAAPoAAAAEBsWc/D0DLfDaKsfCB071/SwulSKmgw4Dj8v91kPIAmY8ZHOqJ6r0IAOw7karceldQ==", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "Instructors",
+                columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "SubjectId", "UpdatedAt", "UserRoleId", "Username" },
+                values: new object[] { 1, new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "instru@api.com", "kleber", "AQAAAAEAAAPoAAAAEB2sb8GjXx93/9QBcmdxjU7yhBXYzE+lqkWUp9knzVM3q2YuUbVTv2mBi0zIWJsltA==", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "instru" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "ResponsiblePhone", "UpdatedAt", "UserRoleId", "Username" },
+                values: new object[] { 1, new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "instru@api.com", "kleber", "AQAAAAEAAAPoAAAAEEit5xra9oOk4sUogpx3nmyChaSJJ1y9kUpa/89kg1sbLTvUFJ+ZY66Wl59mw4mpTg==", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "instru" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Activities_ClassRoomId",
