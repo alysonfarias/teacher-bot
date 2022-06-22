@@ -12,11 +12,10 @@ namespace Hackathon.Infrastructure.Mappings
             builder.Property(cl=>cl.Description).IsRequired().HasMaxLength(500);
 
             builder
-                .HasMany(cl => cl.Activities)
-                .WithOne()
-                .HasForeignKey(at => at.ClassRoomId )
+                .HasMany(at=>at.Activities)
+                .WithOne(at => at.ClassRoom)
+                .HasForeignKey(cl => cl.ClassRoomId)
                 .IsRequired();
-                
         }
     }
 }

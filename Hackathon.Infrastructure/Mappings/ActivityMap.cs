@@ -11,10 +11,10 @@ namespace Hackathon.Infrastructure.Mappings
             builder.Property(at=>at.Title).IsRequired().HasMaxLength(200);
             builder.Property(at=>at.Description).IsRequired().HasMaxLength(500);
             builder.Property(at=>at.DueDate).IsRequired().HasMaxLength(500);
-            
+
             builder
                 .HasMany(at=>at.Arquives)
-                .WithOne()
+                .WithOne(at => at.Activity)
                 .HasForeignKey(aq=>aq.ActivityId)
                 .IsRequired();
         }
