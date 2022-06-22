@@ -11,7 +11,6 @@ namespace Hackathon.API.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(Roles = Roles.Instructor)]
-    [Authorize(Roles = Roles.Admin)]
     public class ClassRoomController : ControllerBase
     {
         public IClassRoomService _classRoomService { get; set; }
@@ -52,8 +51,22 @@ namespace Hackathon.API.Controllers
 
         [HttpPost]
         [Route("{id}/activity")]
-        public async Task<ActionResult<ActivityResponse>> RegisterActivityAsync(int id ,[FromBody] ActivityRequest activityRequest)
+        public async Task<ActionResult<ActivityResponse>> RegisterActivityAsync(int id ,[FromBody] ActivityRequest activityRequest, [FromForm] List<IFormFile> files)
         {
+            //foreach (var file in files)
+            //{
+            //    if (file.Length > 0)
+            //    {
+            //        using (var ms = new MemoryStream())
+            //        {
+            //            file.CopyTo(ms);
+            //            var fileBytes = ms.ToArray();
+            //            string s = Convert.ToBase64String(fileBytes);
+            //            // act on the Base64 data
+            //            Console.WriteLine(s);
+            //        }
+            //    }
+            //}
             var activityResponse = await _classRoomService.RegisterActivityAsync(id,_authService.AuthUser.Id,activityRequest);
             return Ok(activityRequest);
         }
