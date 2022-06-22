@@ -4,6 +4,7 @@ using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
+using Hackathon.Application.Params;
 using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Interfaces.Repositories;
 using Hackathon.Domain.Models;
@@ -18,6 +19,7 @@ namespace Hackathon.Application.Services
     {
         public IClassRoomRepository _classRoomRepository { get; set; }
         public IValidator<ClassRoomRequest> _classRoomValidator { get; set; }
+        public IValidator<ActivityRequest> _activityValidator { get; set; }
         public IMapper _mapper { get; set; }
         public IUnitOfWork _unitOfWork { get; set; }
         public IAuthService _authService {get;set;}
@@ -27,6 +29,7 @@ namespace Hackathon.Application.Services
         (
             IClassRoomRepository classRoomRepository,
             IValidator<ClassRoomRequest> classRoomValidator,
+            IValidator<ActivityRequest> activityValidator,
             IMapper mapper,
             IUnitOfWork unitOfWork,
             IAuthService authService 
@@ -43,6 +46,7 @@ namespace Hackathon.Application.Services
             .ThenInclude(x => x.Arquives)
             );
 
+            _activityValidator = activityValidator;
         }
 
         public async Task<ClassRoomResponse> RegisterAsync(ClassRoomRequest classRoomRequest, int intructorId)
@@ -107,6 +111,9 @@ namespace Hackathon.Application.Services
                 throw new NotAuthorizedException();
 
             //Validar request
+            var validationResult = await _activityValidator.ValidateAsync(activityRequest);
+            if (!validationResult.IsValid)
+                throw new BadRequestException(validationResult);
 
             var activity = _mapper.Map<Activity>(activityRequest);
             var listActivities = classRoom.Activities.ToList();
@@ -220,8 +227,11 @@ namespace Hackathon.Application.Services
             var activity = classRoom.Activities.SingleOrDefault(at => at.Id == activityId);
             if( activity is null)
                 throw new NotFoundException("O id da atividade informado não existe");
-                
+
             //Validar request
+            var validationResult = await _activityValidator.ValidateAsync(activityRequest);
+            if (!validationResult.IsValid)
+                throw new BadRequestException(validationResult);
 
             _mapper.Map(activity,activityRequest);
 
@@ -251,6 +261,16 @@ namespace Hackathon.Application.Services
 
             await _unitOfWork.CommitAsync();
             return _mapper.Map<ActivityResponse>(activity);            
+        }
+
+        public async Task<IEnumerable<ClassRoomResponse>> GetAsync(ClassRoomParams queryParams = null)
+        {
+            return _mapper.Map<IEnumerable<ClassRoomResponse>>(await _classRoomRepository.GetAllAsync(queryParams.Filter()));
+        }
+
+        public async Task<ClassRoomResponse> GetById(int id)
+        {
+            return _mapper.Map<ClassRoomResponse>(await _classRoomRepository.GetByIdAsync(id));
         }
     }
 }
