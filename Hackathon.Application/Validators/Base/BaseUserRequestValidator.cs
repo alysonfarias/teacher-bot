@@ -5,6 +5,7 @@ using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Hackathon.Application.Validators.Base
 {
@@ -41,6 +42,21 @@ namespace Hackathon.Application.Validators.Base
             RuleFor(ur => ur.UserRoleId)
                 .Must(type => Enumeration.GetAll<UserRole>().Any(userRole => userRole.Id==type))
                 .WithMessage("Tipo de usuario invalido");
+
+            RuleFor(ur => ur.Password)
+                .NotEmpty()
+                .WithMessage("Campo Obrigatorio")
+                .Must(X => isValidPassword(X))
+                .WithMessage("Senha num formato invalido!");
+        }
+        private static bool isValidPassword(string password)
+        {
+
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+
+            return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && !(hasSymbols.IsMatch(password));
         }
     }
 }
