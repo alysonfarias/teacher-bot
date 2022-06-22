@@ -1,10 +1,13 @@
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
+using Hackathon.Application.Params;
 
 namespace Hackathon.Application.Interfaces.Services
 {
     public interface IClassRoomService
     {
+        Task<IEnumerable<ClassRoomResponse>> GetAsync(ClassRoomParams queryParams = null);
+        Task<ClassRoomResponse> GetById(int id);
         Task<ClassRoomResponse> RegisterAsync(ClassRoomRequest classRoomRequest, int id);
         Task<ClassRoomResponse> UpdateAsync(int id, ClassRoomRequest classRoomRequest);
         Task<ClassRoomResponse> DeleteAsync(int id);
