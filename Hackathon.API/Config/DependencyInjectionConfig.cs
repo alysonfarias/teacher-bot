@@ -13,8 +13,10 @@ using Hackathon.Domain;
 using Hackathon.Application.Services;
 using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.DTOS.Instructor;
+using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Validators.Base;
 using Hackathon.Application.Validators;
+
 
 namespace Hackathon.API.Config
 {
@@ -29,6 +31,8 @@ namespace Hackathon.API.Config
             services.AddScoped<ILoginService<Student>, LoginService<Student>>();
             services.AddScoped<ILoginService<Instructor>, LoginService<Instructor>>();
             services.AddScoped<ILoginService<Admin>, LoginService<Admin>>();
+            services.AddScoped<IClassRoomService,ClassRoomService>();
+            services.AddScoped<IClassRoomRepository,ClassRoomRepository>();
 
             //auth
             services.AddScoped<IAuthService, AuthService>();
