@@ -85,6 +85,16 @@ namespace Hackathon.Infrastructure.Context
                 BirthDate = DateTime.ParseExact("12/05/2001", "dd/MM/yyyy", CultureInfo.InvariantCulture),
             });
 
+            modelBuilder
+                .Entity<ClassRoom>()
+                .HasData(new ClassRoom
+                {
+                    Id = 10,
+                    Name = "sala teste",
+                    Description = "sale de teste",
+                    InstructorId = 1
+                });
+
         }
     }
 }
