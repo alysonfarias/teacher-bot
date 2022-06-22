@@ -1,4 +1,5 @@
 using Hackathon.Application.DTOS.Activity;
+using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 
 namespace Hackathon.Application.Interfaces.Services
@@ -11,5 +12,6 @@ namespace Hackathon.Application.Interfaces.Services
         Task<ActivityResponse> RegisterActivityAsync(int classRoomId, int instructorId, ActivityRequest activityRequest);
         Task<ActivityResponse> UpdateActivityAsync(int classRoomId,int activityId, int instructorId, ActivityRequest activityRequest);
         Task<ActivityResponse> DeleteActivityAsync(int classRoomId, int activityId, int instructorId);
+        Task SendActivity(int classRoomId, int activityId,int studentId, ArquiveRequest arquiveRequest);
     }
 }

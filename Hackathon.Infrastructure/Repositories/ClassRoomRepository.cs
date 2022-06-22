@@ -9,5 +9,17 @@ namespace Hackathon.Infrastructure.Repositories
     {
         public ClassRoomRepository(ApplicationContext context) : base(context)
         {}
+
+        public async Task SendActivity(int activityId, int studentId, string dataBase64)
+        {
+            
+            await _context.Set<StudentActivity>().AddAsync(
+                new StudentActivity{
+                    DataBase64 = dataBase64,
+                    StudentId = studentId,
+                    ActivityId = activityId
+                }
+            );
+        }
     }
 }

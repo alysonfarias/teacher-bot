@@ -2,6 +2,7 @@ using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Activity;
+using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Domain.Interfaces;
@@ -152,6 +153,17 @@ namespace Hackathon.Application.Services
 
             await _unitOfWork.CommitAsync();
             return _mapper.Map<ActivityResponse>(activity);            
+        }
+
+        public async Task SendActivity(int classRoomId, int activityId, int studentId, ArquiveRequest arquiveRequest)
+        {
+            //Validacoes de regra de negocio
+            //Validar a request
+
+            await _classRoomRepository.SendActivity(activityId,studentId,arquiveRequest.DataBase64);
+            await _unitOfWork.CommitAsync();
+            //Enviar o email informando que o aluno respondeu a atividade
+        
         }
     }
 }

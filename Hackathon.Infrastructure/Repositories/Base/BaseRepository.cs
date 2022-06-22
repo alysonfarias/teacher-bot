@@ -8,7 +8,7 @@ namespace Hackathon.Infrastructure.Repositories.Base
 {
     public abstract class BaseRepository<T> : IBaseRepository<T> where T : Register
     {
-       private readonly ApplicationContext _context;
+       protected readonly ApplicationContext _context;
        private readonly DbSet<T> _set;
        private IQueryable<T> _preQuery;
 
