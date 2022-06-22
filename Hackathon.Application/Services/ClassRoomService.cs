@@ -4,6 +4,7 @@ using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
+using Hackathon.Application.Params;
 using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Interfaces.Repositories;
 using Hackathon.Domain.Models;
@@ -152,6 +153,16 @@ namespace Hackathon.Application.Services
 
             await _unitOfWork.CommitAsync();
             return _mapper.Map<ActivityResponse>(activity);            
+        }
+
+        public async Task<IEnumerable<ClassRoomResponse>> GetAsync(ClassRoomParams queryParams = null)
+        {
+            return _mapper.Map<IEnumerable<ClassRoomResponse>>(await _classRoomRepository.GetAllAsync(queryParams.Filter()));
+        }
+
+        public async Task<ClassRoomResponse> GetById(int id)
+        {
+            return _mapper.Map<ClassRoomResponse>(await _classRoomRepository.GetByIdAsync(id));
         }
     }
 }

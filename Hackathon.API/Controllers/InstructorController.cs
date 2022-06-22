@@ -1,6 +1,7 @@
 using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Application.DTOS.Instructor;
 using Hackathon.Application.Interfaces;
+using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Params;
 using Hackathon.Application.Roles;
 using Hackathon.Domain.Models;
@@ -15,10 +16,12 @@ namespace Hackathon.API.Controllers
     public class InstructorController : ControllerBase
     {
         private readonly IInstructorService _instructorService;
+        private readonly IClassRoomService _classRoomService;
 
-        public InstructorController(IInstructorService instructorService)
+        public InstructorController(IInstructorService instructorService, IClassRoomService classRoomService)
         {
             _instructorService = instructorService;
+            _classRoomService = classRoomService;
         }
 
         [HttpGet]
@@ -31,6 +34,12 @@ namespace Hackathon.API.Controllers
         public async Task<ActionResult<InstructorResponse>> GetByIdAsync(int id)
         {
             return await _instructorService.GetByIdAsync(id);
+        }
+
+        [HttpGet("{ClassRoomId:int}")]
+        public async Task<ActionResult<InstructorResponse>> GetActivitiesInClassRoom(int ClassRoomId)
+        {
+            return await _classRoomService.
         }
 
         [HttpPost]
