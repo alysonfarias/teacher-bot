@@ -4,6 +4,7 @@ using Hackathon.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackathon.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220622155808_migration_teste")]
+    partial class migration_teste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@api.com",
                             Name = "Admin Root Application",
-                            Password = "AQAAAAEAAAPoAAAAECBPzeAlLNoe3NwI/AF+QPam5pZmRzIYGgHHTHFy3XLW8DEKEM+b4jXLx7uAaWpKsQ==",
+                            Password = "AQAAAAEAAAPoAAAAEGls60SWpLo+rxWJI4chI/kJKjyH11AYJHvjfGf2lG6BGZh5rgufGeC8/zDd+jkI1A==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 1,
                             Username = "admin"
@@ -96,6 +98,9 @@ namespace Hackathon.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("ClassRoomId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClassRoomId1")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -125,6 +130,8 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClassRoomId");
+
+                    b.HasIndex("ClassRoomId1");
 
                     b.ToTable("Activities");
                 });
@@ -186,6 +193,9 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("InstructorId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -199,6 +209,8 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("InstructorId");
+
+                    b.HasIndex("InstructorId1");
 
                     b.ToTable("ClassRooms");
 
@@ -394,7 +406,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "instru@api.com",
                             Name = "kleber",
-                            Password = "AQAAAAEAAAPoAAAAECcckFeqkJmA7kpUHIHsyvduwn/kA3TILokKVQzCU8xRRKYdi4WniRjZbO7gr0XNag==",
+                            Password = "AQAAAAEAAAPoAAAAEC/58/vORHjAuS+pMFInxwkjrJcrYH55dibVRK1amP3pBfNFba7L7JRQWQTTG/6Csw==",
                             SubjectId = 1,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 2,
@@ -464,7 +476,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "instru@api.com",
                             Name = "kleber",
-                            Password = "AQAAAAEAAAPoAAAAEFD+TB/4pu+0whZLSZFdXHaPt5t/pvyE9T3LLWUgbtkFqIDVXvKbGPfl5NaKFL549A==",
+                            Password = "AQAAAAEAAAPoAAAAEKMz6AxMvjpy735v0ifCEg2zXjMpAVzKyCgujmT2KoY3SxIFvWBe+giehpu7JDn7ZQ==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 3,
                             Username = "instru"
@@ -499,11 +511,15 @@ namespace Hackathon.Infrastructure.Migrations
 
             modelBuilder.Entity("Hackathon.Domain.Models.Activity", b =>
                 {
-                    b.HasOne("Hackathon.Domain.Models.ClassRoom", "ClassRoom")
+                    b.HasOne("Hackathon.Domain.Models.ClassRoom", null)
                         .WithMany("Activities")
                         .HasForeignKey("ClassRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Hackathon.Domain.Models.ClassRoom", "ClassRoom")
+                        .WithMany()
+                        .HasForeignKey("ClassRoomId1");
 
                     b.Navigation("ClassRoom");
                 });
@@ -529,11 +545,15 @@ namespace Hackathon.Infrastructure.Migrations
 
             modelBuilder.Entity("Hackathon.Domain.Models.ClassRoom", b =>
                 {
-                    b.HasOne("Hackathon.Domain.Models.Instructor", "Instructor")
+                    b.HasOne("Hackathon.Domain.Models.Instructor", null)
                         .WithMany("Classrooms")
                         .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Hackathon.Domain.Models.Instructor", "Instructor")
+                        .WithMany()
+                        .HasForeignKey("InstructorId1");
 
                     b.Navigation("Instructor");
                 });
