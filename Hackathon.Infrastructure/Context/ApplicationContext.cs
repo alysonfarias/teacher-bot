@@ -20,6 +20,7 @@ namespace Hackathon.Infrastructure.Context
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Arquive> Arquives { get; set; }
         public DbSet<DeliveryActivity> DeliveryActivity { get; set; }
+        public DbSet<ClassRoomParticipants> ClassRoomParticipants { get; set; }
         public DbSet<FileType> FileTypes { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
@@ -42,7 +43,6 @@ namespace Hackathon.Infrastructure.Context
                 .Entity<UserRole>()
                 .HasData(Enumeration.GetAll<UserRole>());
 
-            //TODO: Create the Admin
             modelBuilder
             .Entity<Admin>()
             .HasData(new Admin
