@@ -5,6 +5,5 @@ namespace Hackathon.Application.Interfaces
 {
     public interface IInstructorService : IUserService<Instructor, InstructorRequest, InstructorResponse>
     {
-        
     }
 }

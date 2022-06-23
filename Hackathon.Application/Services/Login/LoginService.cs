@@ -11,28 +11,22 @@ namespace Hackathon.Application.Services.Login
     public class LoginService<T> : ILoginService<T> where T : User
     {
         private readonly IUserRepository<T> _userRepository;
-        //private readonly IValidator<LoginDTO> _validator;
-
+        
         public LoginService(
             IUserRepository<T> userRepository)
         {
             _userRepository = userRepository;
-            //_validator = validator;
         }
 
         public async Task<IEnumerable<Claim>> Login(LoginDTO model)
         {
-            //var validation = await _validator.ValidateAsync(model);
-            //if (!validation.IsValid)
-            //    throw new BadRequestException(validation);
-
             var user = await _userRepository.GetUserByName(model.Username);
 
             if (user is null)
-                throw new BadRequestException(nameof(model.Username), "User not found");
+                throw new BadRequestException(nameof(model.Username), "Usuário não encontrado");
 
             if (!PasswordHasher.Verify(model.Password, user.Password))
-                throw new BadRequestException(nameof(model.Password), "Invalid password");
+                throw new BadRequestException(nameof(model.Password), "Senha inválida");
 
             return new List<Claim>()
                 {

@@ -1,5 +1,3 @@
-
-using Hackathon.Application.DTOS.Common;
 using Hackathon.Application.DTOS.Enumerations;
 
 namespace Hackathon.Application.DTOS.Arquive

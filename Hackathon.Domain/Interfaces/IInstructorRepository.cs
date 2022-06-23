@@ -5,6 +5,5 @@ namespace Hackathon.Domain.Interfaces
 {
     public interface IInstructorRepository : IUserRepository<Instructor>
     {
-         
     }
 }

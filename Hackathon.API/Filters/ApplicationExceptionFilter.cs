@@ -41,7 +41,6 @@ namespace Hackathon.API.Filters
                     Errors = new Dictionary<string, string>()
                 });
             }
-        }
-        
+        }   
     }
 }

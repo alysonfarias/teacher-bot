@@ -93,6 +93,5 @@ namespace Hackathon.API.Controllers
             var activityResponse = await _classRoomService.DeleteActivityAsync(classRoomId, activityId, _authService.AuthUser.Id);
             return Ok(activityResponse);
         }
-
     }
 }

@@ -51,7 +51,6 @@ namespace Hackathon.Application.Validators.Base
         }
         private static bool isValidPassword(string password)
         {
-
             var hasNumber = new Regex(@"[0-9]+");
             var hasUpperChar = new Regex(@"[A-Z]+");
             var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");

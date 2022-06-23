@@ -14,7 +14,7 @@ namespace Hackathon.API.Config
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n
+                    Description = @"JWT Authorization header usando o Bearer scheme. \r\n\r\n
                                         Digite 'Bearer' [space] e o token de login.
                                         \r\n\r\nExemplo: 'Bearer 12345abcdef'",
 

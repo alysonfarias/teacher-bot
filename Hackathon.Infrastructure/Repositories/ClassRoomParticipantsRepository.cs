@@ -8,6 +8,6 @@ namespace Hackathon.Infrastructure.Repositories
     public class ClassRoomParticipantsRepository : BaseRepository<ClassRoomParticipants>, IClassRoomParticipantsRepository
     {
         public ClassRoomParticipantsRepository(ApplicationContext context) : base(context)
-    { }
-}
+        {}
+    }
 }

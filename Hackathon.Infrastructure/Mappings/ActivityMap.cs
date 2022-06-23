@@ -30,7 +30,6 @@ namespace Hackathon.Infrastructure.Mappings
                         x.ToTable("Tb_DeliveryActive");
                         x.HasKey(p => new { p.ActivityId, p.StudentId });
                     });
-
         }
     }
 }

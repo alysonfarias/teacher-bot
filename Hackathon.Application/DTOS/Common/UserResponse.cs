@@ -1,6 +1,4 @@
-﻿
-
-using Hackathon.Application.DTOS.Enumerations;
+﻿using Hackathon.Application.DTOS.Enumerations;
 
 namespace Hackathon.Application.DTOS.Common
 {

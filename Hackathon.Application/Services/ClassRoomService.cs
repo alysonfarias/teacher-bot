@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System.Configuration;
 
 namespace Hackathon.Application.Services
 {
@@ -25,7 +24,6 @@ namespace Hackathon.Application.Services
         public IMapper _mapper { get; set; }
         public IUnitOfWork _unitOfWork { get; set; }
         public IAuthService _authService {get;set;}
-
 
         public ClassRoomService
         (

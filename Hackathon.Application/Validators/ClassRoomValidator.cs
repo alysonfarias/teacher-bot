@@ -20,6 +20,5 @@ namespace Hackathon.Application.Validators
                 .MaximumLength(500)
                 .WithMessage("Tamanho da descrição excedendo 500");
         }
-    
     }
 }

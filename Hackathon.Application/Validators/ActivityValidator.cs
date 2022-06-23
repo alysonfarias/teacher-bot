@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using Hackathon.Application.DTOS.Activity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hackathon.Application.Validators
 {
@@ -14,21 +9,20 @@ namespace Hackathon.Application.Validators
         {
             RuleFor(x => x.Title)
                 .NotEmpty()
-                .WithMessage("Campo Obrigatorio")
+                .WithMessage("Campo Obrigatório")
                 .Length(100)
-                .WithMessage("A atividade precisa ter um titulo");
+                .WithMessage("A atividade precisa ter um título");
 
             RuleFor(x => x.Description)
                .NotEmpty()
-               .WithMessage("Campo Obrigatorio")
+               .WithMessage("Campo Obrigatório")
                .Length(250)
-               .WithMessage("A atividade precisa ter um titulo");
+               .WithMessage("A atividade precisa ter um título");
 
             RuleFor(x => x.DueDate)
-                .NotEmpty().WithMessage("Campo Obrigatorio")
+                .NotEmpty().WithMessage("Campo Obrigatório")
                 .LessThan(x => DateTime.Now)
-                .WithMessage("Data invalida! A data do vencimento não pode está no passado");
+                .WithMessage("Data inválida! A data do vencimento não pode está no passado");
         }
-
     }
 }

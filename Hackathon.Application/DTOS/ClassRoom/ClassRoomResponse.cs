@@ -1,8 +1,5 @@
-
-
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.Common;
-using Hackathon.Application.DTOS.Instructor;
 using Hackathon.Application.DTOS.Student;
 
 namespace Hackathon.Application.DTOS.ClassRoom

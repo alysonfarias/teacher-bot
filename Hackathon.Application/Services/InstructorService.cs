@@ -10,7 +10,13 @@ namespace Hackathon.Application.Services
 {
     public class InstructorService : UserService<Instructor, InstructorRequest, InstructorResponse>, IInstructorService
     {
-        public InstructorService(IUserRepository<Instructor> userRepository, IMapper mapper, IUnitOfWork unitOfWork, IValidator<InstructorRequest> userRequestValidator, IAuthService authService) : base(userRepository, mapper, unitOfWork, userRequestValidator, authService)
+        public InstructorService
+        (
+            IUserRepository<Instructor> userRepository, 
+            IMapper mapper, IUnitOfWork unitOfWork, 
+            IValidator<InstructorRequest> userRequestValidator, 
+            IAuthService authService
+        ) : base(userRepository, mapper, unitOfWork, userRequestValidator, authService)
         {
         }
     }

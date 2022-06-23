@@ -1,4 +1,3 @@
-
 using FluentValidation.AspNetCore;
 using Hackathon.Application.DTOS.Instructor;
 using Hackathon.Application.DTOS.Student;
@@ -15,15 +14,12 @@ using Hackathon.Domain.Models;
 using Hackathon.Infrastructure.Context;
 using Hackathon.Infrastructure.Repositories;
 using Hackathon.Infrastructure.UnitOfWork;
-
-
 namespace Hackathon.API.Config
 {
     public static class DependencyInjectionConfig
     {
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services)
         {
-
             services.AddScoped<ApplicationContext>();
 
             //services
@@ -63,6 +59,5 @@ namespace Hackathon.API.Config
 
             return services;
         }
-
     }
 }
