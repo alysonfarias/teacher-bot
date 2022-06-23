@@ -8,6 +8,6 @@ namespace Hackathon.Application.DTOS.Instructor
     {
         public UserRoleResponse UserRole { get; set; }
         public SubjectResponse Subject { get; set; }
-        IEnumerable<ClassRoomResponse> ClassRooms { get; set; }
+        IEnumerable<ClassRoomMinimalResponse> ClassRooms { get; set; }
     }
 }

@@ -39,6 +39,8 @@ namespace Hackathon.Application.Services
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _authService = authService;
+
+            _userRepository.AddPreQuery(x => x.Include(x => x.UserRole));
         }
 
         public async Task<Res> RegisterAsync(Req userRequest)

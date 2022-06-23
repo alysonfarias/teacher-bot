@@ -21,6 +21,7 @@ namespace Hackathon.Application.Mappers
 
             CreateMap<UserRole, UserRoleResponse>();
             CreateMap<ClassRoom, ClassRoomResponse>();
+            CreateMap<ClassRoom, ClassRoomMinimalResponse>();
             CreateMap<Activity, ActivityResponse>();
             CreateMap<Arquive, ArquiveResponse>();
         }
