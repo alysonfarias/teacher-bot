@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Hackathon.Application.CustomExceptions;
+using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Interfaces.Repositories;
 using Hackathon.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Application.Services
 {
@@ -11,19 +13,16 @@ namespace Hackathon.Application.Services
     {
         public IClassRoomParticipantsRepository _classRoomParticipantsRepository { get; set; }
         public IClassRoomRepository _classRoomRepository { get; set; }
-        public IStudentRepository _studentRepository { get; set; }
         public IMapper _mapper { get; set; }
         public IUnitOfWork _unitOfWork { get; set; }
 
         public ClassRoomParticipantsService(IClassRoomParticipantsRepository classRoomParticipantsRepository,
-            IStudentRepository studentRepository,
             IClassRoomRepository classRoom,
             IMapper mapper,
             IUnitOfWork unitOfWork)
         {
             _classRoomParticipantsRepository = classRoomParticipantsRepository;
             _classRoomRepository = classRoom;
-            _studentRepository = studentRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
@@ -42,6 +41,18 @@ namespace Hackathon.Application.Services
 
             await _classRoomParticipantsRepository.RegisterAsync(classRoomParticipant);
             await _unitOfWork.CommitAsync();
+        }
+        
+        public async Task<IEnumerable<ClassRoomResponse>> GetParticipatingClasses(int studentId)
+        {
+            var listClassRoomsParticipants = await _classRoomParticipantsRepository
+                .Query()
+                .Where(cp => cp.StudentId == studentId)
+                .ToListAsync();
+        
+            return _mapper.Map<IEnumerable<ClassRoomResponse>>(
+                listClassRoomsParticipants.Select(cp => cp.ClassRoom)
+            );
         }
     }
 }

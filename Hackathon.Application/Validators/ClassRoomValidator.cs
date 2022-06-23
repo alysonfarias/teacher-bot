@@ -14,13 +14,13 @@ namespace Hackathon.Application.Validators
         {
             RuleFor(cr => cr.Name)
                 .NotEmpty()
-                .WithMessage("Campo Obrigatorio");
+                .WithMessage("Campo Obrigatorio")
                 .MustAsync((name,cancellationToken) => _classRoomRepository.Query().AsNoTracking().AllAsync(classroom=> classroom.Name!=name,cancellationToken))
                 .WithMessage("Nome já cadastrado no sitema");
 
             RuleFor(cr => cr.Description )
                 .NotEmpty()
-                .WithMessage("Campo Obrigatorio");
+                .WithMessage("Campo Obrigatorio")
                 .MaximumLength(500)
                 .WithMessage("Tamanho da descrição excedendo 500");
         }
