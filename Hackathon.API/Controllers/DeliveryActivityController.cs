@@ -1,5 +1,7 @@
 using Hackathon.Application.DTOS.DeliveryActivity;
+using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Interfaces.Services;
+using Hackathon.Application.Params;
 using Hackathon.Application.Roles;
 using Hackathon.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -8,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hackathon.API.Controllers
 {
     [ApiController]
-    [Authorize(Roles = Roles.Student)]
+    [Authorize]
     [Route("api/[controller]")]
     public class DeliveryActivityController : ControllerBase
     {
@@ -28,6 +30,15 @@ namespace Hackathon.API.Controllers
         {
             await _deliveryActivityService.SendActivity(_authService.AuthUser.Id, deliveryActivityRequest);
             return NoContent();
+        }
+
+        [HttpGet]
+        [Route("/[action]/{activityId : int}")]
+        [Authorize(Roles = $"{Roles.Instructor}, {Roles.Admin}")]
+        public async Task<IEnumerable<StudentMinimalResponse>> GetStudentsByActivity(DeliveryActivityParams deliveryActivityParams)
+        {
+            var studentResponses = await _deliveryActivityService.GetStudentsByActivity(deliveryActivityParams,_authService.AuthUser.Id);
+            return studentResponses;
         }
     }
 }
