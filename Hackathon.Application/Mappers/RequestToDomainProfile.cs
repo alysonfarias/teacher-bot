@@ -1,4 +1,5 @@
 using AutoMapper;
+using Hackathon.Application.Constants;
 using Hackathon.Application.DTOS.Activity;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.DTOS.DeliveryActivity;
@@ -12,8 +13,10 @@ namespace Hackathon.Application.Mappers
     {
         public RequestToDomainProfile()
         {
-            CreateMap<InstructorRequest,Instructor>();
-            CreateMap<StudentRequest,Student>();
+            CreateMap<InstructorRequest, Instructor>()
+                .ForMember(x => x.UserRoleId, m => m.MapFrom(req => 2));
+            CreateMap<StudentRequest, Student>()
+                .ForMember(x => x.UserRoleId, m => m.MapFrom(req => 3));
             CreateMap<ActivityRequest,Activity>();
             CreateMap<ClassRoomRequest, ClassRoom>();
             CreateMap<DeliveryActivityRequest,DeliveryActivity>();

@@ -8,6 +8,7 @@ using Hackathon.Application.Params;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Interfaces.Base.Common;
+using Hackathon.Domain.Models;
 using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 using Hackathon.Infrastructure.Utils;

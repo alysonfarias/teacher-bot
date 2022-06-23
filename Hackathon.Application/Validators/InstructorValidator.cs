@@ -14,7 +14,7 @@ namespace Hackathon.Application.Validators
         public InstructorValidator(IInstructorRepository _instructorRepository)
         :base(_instructorRepository)
         {
-            RuleFor(ir => ir.UserRoleId)
+            RuleFor(ir => ir.SubjectId)
                 .Must(type => Enumeration.GetAll<Subject>().Any(subject => subject.Id==type))
                 .WithMessage("Disciplina inválida");
         }
