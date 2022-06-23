@@ -120,12 +120,13 @@ namespace Hackathon.Application.Services
             if(classRoom.InstructorId != instructorId)
                 throw new NotAuthorizedException();
 
-            //Validar request
-            //var validationResult = await _activityValidator.ValidateAsync(activityRequest);
-            //if (!validationResult.IsValid)
-            //    throw new BadRequestException(validationResult);
+            var validationResult = await _activityValidator.ValidateAsync(activityRequest);
+            if (!validationResult.IsValid)
+                throw new BadRequestException(validationResult);
 
             var activity = _mapper.Map<Activity>(activityRequest);
+            activity.UpdatedAt = DateTime.Now;
+
             var listActivities = classRoom.Activities.ToList();
             listActivities.Add(activity);
 
@@ -141,11 +142,11 @@ namespace Hackathon.Application.Services
 
         private async Task<bool> SendEmailToStudents(Activity activity, ClassRoom classRoom)
         {
-            string hostEmail = "wesley_play.tj@live.com";
-            string hostName = "wesley";
+            string hostEmail = "wartelon.malthus@gmail.com";
+            string hostName = "Wartelon";
             //TODO: verificar um jeito de colocar isso na user secrets
             // string apiKey = Configuration.GetSection<String>["SendGridAPIKey"];
-            string apiKey = "NeedToFigureOutHowToDoGetSection";
+            string apiKey = "";
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {

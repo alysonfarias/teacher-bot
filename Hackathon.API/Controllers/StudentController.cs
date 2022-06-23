@@ -3,7 +3,6 @@ using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Interfaces;
 using Hackathon.Application.Params;
 using Hackathon.Application.Roles;
-using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +11,14 @@ namespace Hackathon.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = Roles.Student)]
+    [Authorize(Roles = Roles.Admin)]
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
-        private IAuthService _authService {get;set;}
 
-        public StudentController(IStudentService studentService, IAuthService authService)
+        public StudentController(IStudentService studentService)
         {
             _studentService = studentService;
-            _authService = authService;
         }
 
         [HttpGet]
@@ -37,6 +34,7 @@ namespace Hackathon.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Roles.Admin)]
         public async Task<ActionResult<StudentResponse>> PostAsync([FromBody] StudentRequest student)
         {
             return await _studentService.RegisterAsync(student);

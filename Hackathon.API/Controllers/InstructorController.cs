@@ -11,7 +11,8 @@ namespace Hackathon.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = Roles.Instructor)]
+    [Authorize(Roles = Roles.Admin)]
+
     public class InstructorController : ControllerBase
     {
         private readonly IInstructorService _instructorService;
