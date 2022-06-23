@@ -60,12 +60,6 @@ namespace Hackathon.API.Controllers
             return _studentService.GetUserRoles();
         }
 
-        [HttpPost]
-        [Route("register-for-classroom/{classRoomId:int}")]
-        public async Task<IActionResult> RegisterForClassRoom(int classRoomId)
-        {
-            await _studentService.RegisterForClassRoom(classRoomId, _authService.AuthUser.Id);
-            return Ok("Student added to the classroom");
-        }
+
     }
 }

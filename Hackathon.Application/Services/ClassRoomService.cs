@@ -13,12 +13,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Configuration;
 
 namespace Hackathon.Application.Services
 {
     public class ClassRoomService : IClassRoomService
     {
         public IClassRoomRepository _classRoomRepository { get; set; }
+        public IClassRoomParticipantsRepository _classRoomParticipantsRepository { get; set; }
         public IValidator<ClassRoomRequest> _classRoomValidator { get; set; }
         public IValidator<ActivityRequest> _activityValidator { get; set; }
         public IMapper _mapper { get; set; }
@@ -29,6 +31,7 @@ namespace Hackathon.Application.Services
         public ClassRoomService
         (
             IClassRoomRepository classRoomRepository,
+            IClassRoomParticipantsRepository classRoomParticipantsRepository,
             IValidator<ClassRoomRequest> classRoomValidator,
             IValidator<ActivityRequest> activityValidator,
             IMapper mapper,
@@ -38,6 +41,7 @@ namespace Hackathon.Application.Services
         {
             _classRoomRepository = classRoomRepository;
             _classRoomValidator = classRoomValidator;
+            _classRoomParticipantsRepository = classRoomParticipantsRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _authService = authService;
@@ -45,6 +49,10 @@ namespace Hackathon.Application.Services
             _classRoomRepository.AddPreQuery(x => x
             .Include(x => x.Activities)
             .ThenInclude(x => x.Arquives)
+            );
+
+            _classRoomParticipantsRepository.AddPreQuery(x => x
+            .Include(x => x.Student)
             );
 
             _activityValidator = activityValidator;
@@ -112,9 +120,9 @@ namespace Hackathon.Application.Services
                 throw new NotAuthorizedException();
 
             //Validar request
-            var validationResult = await _activityValidator.ValidateAsync(activityRequest);
-            if (!validationResult.IsValid)
-                throw new BadRequestException(validationResult);
+            //var validationResult = await _activityValidator.ValidateAsync(activityRequest);
+            //if (!validationResult.IsValid)
+            //    throw new BadRequestException(validationResult);
 
             var activity = _mapper.Map<Activity>(activityRequest);
             var listActivities = classRoom.Activities.ToList();
@@ -135,11 +143,9 @@ namespace Hackathon.Application.Services
             string hostEmail = "wesley_play.tj@live.com";
             string hostName = "wesley";
             //TODO: verificar um jeito de colocar isso na user secrets
-            var apiKey = "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";
-
+            // string apiKey = Configuration.GetSection<String>["SendGridAPIKey"];
+            string apiKey = "NeedToFigureOutHowToDoGetSection";
             var client = new SendGridClient(apiKey);
-
-
             var msg = new SendGridMessage()
             {
                 From = new EmailAddress(hostEmail, hostName),
@@ -147,9 +153,12 @@ namespace Hackathon.Application.Services
                 PlainTextContent = $"Sala {classRoom.Name} | {classRoom.Id}  há uma nova uma atividade {activity.Title}, acesse o sistema TeacherBot e tenha acesso"
             };
 
-            
-            msg.AddTo(new EmailAddress("ramos.alysonfarias@gmail.com", "Alyson"));
-            //msg.AddTo(new EmailAddress("alyson.2020130399@unicap.br", "Kelber"));
+            _classRoomParticipantsRepository.AddPreQuery(x => x.Where(p => p.ClassRoomId == classRoom.Id));
+            var studentsList = await _classRoomParticipantsRepository.GetAllAsync();
+            foreach (var student in studentsList)
+                msg.AddTo(new EmailAddress(student.Student.Email, student.Student.Name));
+
+            msg.AddTo(new EmailAddress("alyson.2020130399@unicap.br", "Kelber"));
 
             var response = await client.SendEmailAsync(msg);
 

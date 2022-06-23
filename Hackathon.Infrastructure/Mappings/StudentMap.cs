@@ -13,7 +13,7 @@ namespace Hackathon.Infrastructure.Mappings
 
             builder.HasMany(x => x.ClassRooms)
             .WithMany(x => x.Students)
-            .UsingEntity<StudentClassRoom>(
+            .UsingEntity<ClassRoomParticipants>(
                 x => x.HasOne(p => p.ClassRoom).WithMany().HasForeignKey(x => x.ClassRoomId),
                 x => x.HasOne(p => p.Student).WithMany().HasForeignKey(x => x.StudentId),
                 x =>

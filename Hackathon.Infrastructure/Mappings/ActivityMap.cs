@@ -18,7 +18,19 @@ namespace Hackathon.Infrastructure.Mappings
                 .WithOne(at => at.Activity)
                 .HasForeignKey(aq=>aq.ActivityId)
                 .IsRequired();
-            
+
+            builder
+                .HasMany(at => at.StudentPerformers)
+                .WithMany(at => at.ActivitiesDone)
+                .UsingEntity<DeliveryActivity>(
+                    x => x.HasOne(p => p.Student).WithMany().HasForeignKey(p => p.StudentId),
+                    x => x.HasOne(p => p.Activity).WithMany().HasForeignKey(p => p.ActivityId),
+                    x =>
+                    {
+                        x.ToTable("Tb_DeliveryActive");
+                        x.HasKey(p => new { p.ActivityId, p.StudentId });
+                    });
+
         }
     }
 }
