@@ -1,19 +1,38 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d267af68-ce8d-4f41-b6a5-dfd03ed999e6</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="DTO\**" />
+
+    <Compile Remove="Exceptions\**" />
+    <Compile Remove="Utils\**" />
+    <Compile Remove="Validator\**" />
+    <EmbeddedResource Remove="DTO\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Utils\**" />
+    <EmbeddedResource Remove="Validator\**" />
+    <None Remove="DTO\**" />
+    <None Remove="Exceptions\**" />
+    <None Remove="Utils\**" />
+    <None Remove="Validator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.0.3" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.0.3" />
+    <PackageReference Include="LinqKit" Version="1.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+    <PackageReference Include="SendGrid" Version="9.28.0" />
     <EmbeddedResource Remove="DTO\**" />
     <None Remove="DTO\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.0.3" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -21,6 +40,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Utils\" />
     <Folder Include="Validator\" />
+
   </ItemGroup>
 
   <ItemGroup>
