@@ -16,12 +16,10 @@ namespace Hackathon.API.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
-        private IAuthService _authService {get;set;}
 
-        public StudentController(IStudentService studentService, IAuthService authService)
+        public StudentController(IStudentService studentService)
         {
             _studentService = studentService;
-            _authService = authService;
         }
 
         [HttpGet]
