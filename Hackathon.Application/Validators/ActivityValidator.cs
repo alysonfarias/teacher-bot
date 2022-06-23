@@ -10,13 +10,13 @@ namespace Hackathon.Application.Validators
             RuleFor(x => x.Title)
                 .NotEmpty()
                 .WithMessage("Campo Obrigatório")
-                .Length(100)
+                .MaximumLength(250)
                 .WithMessage("A atividade precisa ter um título");
 
             RuleFor(x => x.Description)
                .NotEmpty()
                .WithMessage("Campo Obrigatório")
-               .Length(250)
+               .MaximumLength(250)
                .WithMessage("A atividade precisa ter um título");
 
             RuleFor(x => x.DueDate)
