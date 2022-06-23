@@ -33,7 +33,7 @@ namespace Hackathon.API.Controllers
         }
 
         [HttpGet]
-        [Route("/[action]/{activityId : int}")]
+        [Route("/[action]/{activityId:int}")]
         [Authorize(Roles = $"{Roles.Instructor}, {Roles.Admin}")]
         public async Task<IEnumerable<StudentMinimalResponse>> GetStudentsByActivity(DeliveryActivityParams deliveryActivityParams)
         {
