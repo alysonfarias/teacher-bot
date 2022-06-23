@@ -37,12 +37,12 @@ namespace Hackathon.Application.Services
             _requestValidator = requestValidator;
             _unitOfWork = unitOfWork;
 
-            _studentRepository.AddPreQuery(query => query.Include(st => st.ClassRooms));
             _deliveryActivityRepository.AddPreQuery(query => query.Include(da => da.Student));
         }
 
         public async Task SendActivity(int studentId, DeliveryActivityRequest deliveryActivityRequest)
         {
+            _studentRepository.AddPreQuery(query => query.Include(st => st.ClassRooms));
             var student = await _studentRepository.GetByIdAsync(studentId);
             if
             ( ! student.ClassRooms
