@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Configuration;
 
 namespace Hackathon.Application.Services
 {
@@ -142,11 +143,9 @@ namespace Hackathon.Application.Services
             string hostEmail = "wesley_play.tj@live.com";
             string hostName = "wesley";
             //TODO: verificar um jeito de colocar isso na user secrets
-            var apiKey = "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";
-
+            // string apiKey = Configuration.GetSection<String>["SendGridAPIKey"];
+            string apiKey = "NeedToFigureOutHowToDoGetSection";
             var client = new SendGridClient(apiKey);
-
-
             var msg = new SendGridMessage()
             {
                 From = new EmailAddress(hostEmail, hostName),
@@ -156,9 +155,10 @@ namespace Hackathon.Application.Services
 
             _classRoomParticipantsRepository.AddPreQuery(x => x.Where(p => p.ClassRoomId == classRoom.Id));
             var studentsList = await _classRoomParticipantsRepository.GetAllAsync();
-            
-            msg.AddTo(new EmailAddress("ramos.alysonfarias@gmail.com", "Alyson"));
-            //msg.AddTo(new EmailAddress("alyson.2020130399@unicap.br", "Kelber"));
+            foreach (var student in studentsList)
+                msg.AddTo(new EmailAddress(student.Student.Email, student.Student.Name));
+
+            msg.AddTo(new EmailAddress("alyson.2020130399@unicap.br", "Kelber"));
 
             var response = await client.SendEmailAsync(msg);
 
