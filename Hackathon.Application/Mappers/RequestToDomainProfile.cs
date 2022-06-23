@@ -19,6 +19,7 @@ namespace Hackathon.Application.Mappers
                 .ForMember(x => x.UserRoleId, m => m.MapFrom(req => 3));
             CreateMap<ActivityRequest,Activity>();
             CreateMap<ClassRoomRequest, ClassRoom>();
+            CreateMap<ClassRoomRequest, ClassRoom>();
             CreateMap<DeliveryActivityRequest,DeliveryActivity>();
         }
     }
