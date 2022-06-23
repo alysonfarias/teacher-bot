@@ -4,7 +4,6 @@ using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Validators.Base;
 using Hackathon.Domain.Interfaces.Repositories;
 using Hackathon.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Hackathon.Application.Validators
 {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Common;
 using Hackathon.Application.DTOS.Enumerations;
 using Hackathon.Application.Interfaces;
@@ -45,9 +46,9 @@ namespace Hackathon.Application.Services
 
         public async Task<Res> RegisterAsync(Req userRequest)
         {
-            /*var validation = await _validator.ValidateAsync(userRequest);
+            var validation = await _userRequestValidator.ValidateAsync(userRequest);
             if (!validation.IsValid)
-                throw new BadRequestException(validation);*/
+                throw new BadRequestException(validation);
 
             T user = _mapper.Map<T>(userRequest);
             user.Password = PasswordHasher.Hash(userRequest.Password);
@@ -75,7 +76,7 @@ namespace Hackathon.Application.Services
         {
             var existing = await _userRepository.GetByIdAsync(id);
             if (existing is null)
-                throw new Exception($"User with Id: {id} does not exists! ");
+                throw new Exception($"Usuário com: {id} não existe! ");
 
             await _userRepository.RemoveAsync(id);
             await _unitOfWork.CommitAsync();
@@ -86,14 +87,14 @@ namespace Hackathon.Application.Services
         {
             var existing = await _userRepository.GetByIdAsync(id);
             if (existing is null)
-                throw new Exception($"User with Id: {id} does not exists! ");
+                throw new Exception($"Usuário com: {id} não existe! ");
 
             _userRepository.AddPreQuery(x => x.Where(u => u.Id != id));
             userRequest.Password = string.IsNullOrEmpty(userRequest.Password) ? existing.Password : PasswordHasher.Hash(userRequest.Password);
 
-            /*var validation = await _validator.ValidateAsync(userRequest);
+            var validation = await _userRequestValidator.ValidateAsync(userRequest);
             if (!validation.IsValid)
-                throw new BadRequestException(validation);*/
+                throw new BadRequestException(validation);
 
             _mapper.Map(userRequest, existing);
             await _userRepository.UpdateAsync(existing);

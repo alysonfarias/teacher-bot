@@ -59,7 +59,5 @@ namespace Hackathon.API.Controllers
         {
             return _studentService.GetUserRoles();
         }
-
-
     }
 }

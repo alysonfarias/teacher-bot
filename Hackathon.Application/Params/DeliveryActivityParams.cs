@@ -15,7 +15,6 @@ namespace Hackathon.Application.Params
                 predicate = predicate.And(x => x.ActivityId == ActivityId);
 
             return predicate;
-        }
-        
+        } 
     }
 }

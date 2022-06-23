@@ -5,7 +5,6 @@ namespace Hackathon.Application.Validators
 {
     public class DeliveryActivityValidator : AbstractValidator<DeliveryActivityRequest>
     {
-        
         public DeliveryActivityValidator()
         {
         }

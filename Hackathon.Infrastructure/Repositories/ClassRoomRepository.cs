@@ -9,6 +9,5 @@ namespace Hackathon.Infrastructure.Repositories
     {
         public ClassRoomRepository(ApplicationContext context) : base(context)
         {}
-
     }
 }

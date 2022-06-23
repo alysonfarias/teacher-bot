@@ -3,7 +3,6 @@ using FluentValidation;
 using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Student;
 using Hackathon.Application.Interfaces;
-using Hackathon.Application.Params;
 using Hackathon.Domain.Interfaces;
 using Hackathon.Domain.Interfaces.Base.Common;
 using Hackathon.Domain.Interfaces.Repositories;
@@ -15,7 +14,15 @@ namespace Hackathon.Application.Services
     public class StudentService : UserService<Student, StudentRequest, StudentResponse>, IStudentService
     {
         private readonly IClassRoomRepository _classRoomRepository;
-        public StudentService(IClassRoomRepository classRoomRepository, IUserRepository<Student> userRepository, IMapper mapper, IUnitOfWork unitOfWork, IValidator<StudentRequest> userRequestValidator, IAuthService authService) : base(userRepository, mapper, unitOfWork, userRequestValidator, authService)
+        public StudentService
+        (
+            IClassRoomRepository classRoomRepository,
+            IUserRepository<Student> userRepository, 
+            IMapper mapper, 
+            IUnitOfWork unitOfWork, 
+            IValidator<StudentRequest> userRequestValidator, 
+            IAuthService authService
+        ) : base(userRepository, mapper, unitOfWork, userRequestValidator, authService)
         {
             _classRoomRepository = classRoomRepository;
             _classRoomRepository.AddPreQuery(x => x

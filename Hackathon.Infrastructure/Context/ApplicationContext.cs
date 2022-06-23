@@ -1,10 +1,7 @@
 ﻿using Hackathon.Domain;
-using Hackathon.Domain.Core;
 using Hackathon.Domain.Core.Common;
 using Hackathon.Domain.Models;
-using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
-using Hackathon.Infrastructure.Mappings;
 using Hackathon.Infrastructure.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -95,7 +92,6 @@ namespace Hackathon.Infrastructure.Context
                     Description = "sale de teste",
                     InstructorId = 1
                 });
-
         }
     }
 }

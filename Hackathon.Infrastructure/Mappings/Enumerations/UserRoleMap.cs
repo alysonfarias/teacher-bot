@@ -1,4 +1,3 @@
-using Hackathon.Domain.Models.Core;
 using Hackathon.Domain.Models.Enumerations;
 using Hackathon.Infrastructure.Mappings.Base;
 using Microsoft.EntityFrameworkCore;

@@ -28,7 +28,7 @@ namespace Hackathon.Infrastructure.Repositories.Base
        {
            var obj = await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
            if (obj == null)
-               throw new InvalidOperationException($"Id: {id} para remover {typeof(T).Name} é invalido");
+               throw new InvalidOperationException($"Id: {id} para remover {typeof(T).Name} é inválido");
 
            var result = _set.Remove(obj);
            return await Task.FromResult(result.Entity);

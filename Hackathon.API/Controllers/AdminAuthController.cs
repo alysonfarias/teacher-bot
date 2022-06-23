@@ -1,7 +1,6 @@
 ﻿using Hackathon.Application.DTOS.Auth;
 using Hackathon.Application.Interfaces;
 using Hackathon.Domain;
-using Hackathon.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hackathon.API.Controllers
@@ -30,6 +29,5 @@ namespace Hackathon.API.Controllers
                 Token = token,
             });
         }
-
     }
 }

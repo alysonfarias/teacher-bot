@@ -1,4 +1,3 @@
-
 using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.CustomExceptions;
@@ -49,7 +48,7 @@ namespace Hackathon.Application.Services
                     .SelectMany(cl => cl.Activities)
                     .Any(at => at.Id == deliveryActivityRequest.ActivityId)
             )
-                throw new NotFoundException("O aluno nao contem tal atividade");
+                throw new NotFoundException("O aluno não contém tal atividade");
 
 
             var validationResult = await _requestValidator.ValidateAsync(deliveryActivityRequest);
@@ -76,7 +75,7 @@ namespace Hackathon.Application.Services
                 .SingleOrDefaultAsync(cl => cl.Activities.Any(at => at.Id ==activityId ));
 
             if(classRoom is null)
-                throw new NotFoundException("Essa atividade nao existe");
+                throw new NotFoundException("Essa atividade não existe");
 
             if (classRoom.InstructorId != instructorId)
                 throw new NotAuthorizedException();
