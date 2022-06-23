@@ -1,4 +1,5 @@
-﻿using Hackathon.Application.Interfaces.Services;
+﻿using Hackathon.Application.DTOS.ClassRoom;
+using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Roles;
 using Hackathon.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -26,6 +27,12 @@ namespace Hackathon.API.Controllers
         {
             await _classRoomParticipantsService.RegisterParticipant(classRoomId, _authService.AuthUser.Id);
             return Ok();
+        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ClassRoomResponse>>> GetParticipatingClasses()
+        {
+            var classRoomResponses = await _classRoomParticipantsService.GetParticipatingClasses(_authService.AuthUser.Id);
+            return Ok(classRoomResponses);
         }
     }
 }
