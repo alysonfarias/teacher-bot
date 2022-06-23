@@ -52,6 +52,10 @@ namespace Hackathon.Application.Services
             .Include(x => x.Student)
             );
 
+            _classRoomRepository.AddPreQuery(x => x
+            .Include(x => x.Students)
+            );
+
             _activityValidator = activityValidator;
         }
 
