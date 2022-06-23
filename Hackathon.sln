@@ -1,23 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.API", "Hackathon.API\Hackathon.API.csproj", "{BD58F74E-A05B-47B8-A418-61E6A1794BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.API", "Hackathon.API\Hackathon.API.csproj", "{BD58F74E-A05B-47B8-A418-61E6A1794BA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Application", "Hackathon.Application\Hackathon.Application.csproj", "{58A234BC-37DF-428B-8029-A2CEB6B1E43F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Application", "Hackathon.Application\Hackathon.Application.csproj", "{58A234BC-37DF-428B-8029-A2CEB6B1E43F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Domain", "Hackathon.Domain\Hackathon.Domain.csproj", "{DED544D1-B164-4D2C-B5E3-DD27C15B4D98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Domain", "Hackathon.Domain\Hackathon.Domain.csproj", "{DED544D1-B164-4D2C-B5E3-DD27C15B4D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Infrastructure", "Hackathon.Infrastructure\Hackathon.Infrastructure.csproj", "{A2B204FB-7ED5-4F0F-9D6E-0B4008645ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Infrastructure", "Hackathon.Infrastructure\Hackathon.Infrastructure.csproj", "{A2B204FB-7ED5-4F0F-9D6E-0B4008645ABF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RoteiroDeTeste", "RoteiroDeTeste", "{1E0868D8-A44D-47B2-A1D9-8A0C286F3202}"
+	ProjectSection(SolutionItems) = preProject
+		Roteiro-teste-Teacher-bot.md = Roteiro-teste-Teacher-bot.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BD58F74E-A05B-47B8-A418-61E6A1794BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +38,11 @@ Global
 		{A2B204FB-7ED5-4F0F-9D6E-0B4008645ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2B204FB-7ED5-4F0F-9D6E-0B4008645ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2B204FB-7ED5-4F0F-9D6E-0B4008645ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7278DA46-6E77-42DA-9441-C5104A9F2954}
 	EndGlobalSection
 EndGlobal
