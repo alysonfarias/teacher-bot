@@ -20,7 +20,10 @@ namespace Hackathon.Infrastructure.Mappings
                 {
                     x.ToTable("tb_student_classroom");
                     x.HasKey(p => new { p.ClassRoomId, p.StudentId });
+                    x.Ignore(p => p.Id);
                 });
+
+
         }
     }
 }

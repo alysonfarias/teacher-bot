@@ -14,7 +14,7 @@ namespace Hackathon.API.Controllers
     [Route("api/[controller]")]
     public class DeliveryActivityController : ControllerBase
     {
-        public IDeliveryActivityService _deliveryActivityService  { get; set; }
+        public IDeliveryActivityService _deliveryActivityService { get; set; }
         public IAuthService _authService { get; set; }
 
         public DeliveryActivityController(IDeliveryActivityService deliveryActivityService, IAuthService authService)
@@ -24,8 +24,7 @@ namespace Hackathon.API.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = Roles.Student)] 
-
+        [Authorize(Roles = Roles.Student)]
         public async Task<ActionResult> RegisterAsync([FromBody] DeliveryActivityRequest deliveryActivityRequest)
         {
             await _deliveryActivityService.SendActivity(_authService.AuthUser.Id, deliveryActivityRequest);
@@ -33,7 +32,7 @@ namespace Hackathon.API.Controllers
         }
 
         [HttpGet]
-        [Route("/[action]/{activityId:int}")]
+        [Route("/[action]")]
         [Authorize(Roles = $"{Roles.Instructor}, {Roles.Admin}")]
         public async Task<IEnumerable<StudentMinimalResponse>> GetStudentsByActivity(DeliveryActivityParams deliveryActivityParams)
         {
