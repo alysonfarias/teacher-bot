@@ -41,8 +41,9 @@ namespace Hackathon.Application.Services
 
         public async Task SendActivity(int studentId, DeliveryActivityRequest deliveryActivityRequest)
         {
-            _studentRepository.AddPreQuery(query => query.Include(st => st.ClassRooms));
+            _studentRepository.AddPreQuery(query => query.Include(st => st.ClassRooms).ThenInclude(cl => cl.Activities));
             var student = await _studentRepository.GetByIdAsync(studentId);
+
             if
             ( ! student.ClassRooms
                     .SelectMany(cl => cl.Activities)
@@ -60,7 +61,7 @@ namespace Hackathon.Application.Services
 
             await _deliveryActivityRepository.RegisterAsync(deliveryActivity);
             await _unitOfWork.CommitAsync();
-            //Informar para o Instructor que a atividade foi entregue pelo aluno
+            
         }
 
         public async Task<IEnumerable<StudentMinimalResponse>> GetStudentsByActivity(DeliveryActivityParams deliveryActivityParams, int instructorId)
@@ -72,7 +73,7 @@ namespace Hackathon.Application.Services
             _classRoomRepository.AddPreQuery(query => query.Include(cl => cl.Activities));
             var classRoom = await _classRoomRepository
                 .Query()
-                .SingleOrDefaultAsync(cl => cl.Activities.Any(at => at.Id ==activityId ));
+                .SingleOrDefaultAsync(cl => cl.Activities.Any(at => at.Id ==activityId));
 
             if(classRoom is null)
                 throw new NotFoundException("Essa atividade não existe");
@@ -82,10 +83,10 @@ namespace Hackathon.Application.Services
             
             var studentsByActivityMade = await _deliveryActivityRepository
                 .GetAllAsync(deliveryActivityParams.Filter());
-                
+
             return _mapper.Map<IEnumerable<StudentMinimalResponse>>(
-                studentsByActivityMade.Select(sa => sa.Student)
-            );    
+                studentsByActivityMade.Select(sa => sa.Student).DistinctBy(sa => sa.Id)
+            );
         }
     }
 }

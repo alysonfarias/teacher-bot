@@ -8,5 +8,6 @@ namespace Hackathon.Domain.Models
         public int StudentId { get; set; }
         public ClassRoom ClassRoom { get; set; }
         public int ClassRoomId { get; set; }
+
     }
 }

@@ -11,12 +11,6 @@ namespace Hackathon.Infrastructure.Mappings
         {
             builder.Property(aq=>aq.DataBase64);
 
-            builder
-                .HasOne(aq => aq.FileType)
-                .WithMany()
-                .HasForeignKey(aq => aq.FileTypeId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);    
         }
     }
 }

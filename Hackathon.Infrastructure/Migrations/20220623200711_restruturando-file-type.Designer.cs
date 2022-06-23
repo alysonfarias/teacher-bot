@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackathon.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220622221957_migration_teste7")]
-    partial class migration_teste7
+    [Migration("20220623200711_restruturando-file-type")]
+    partial class restruturandofiletype
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,7 +82,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@api.com",
                             Name = "Admin Root Application",
-                            Password = "AQAAAAEAAAPoAAAAENgIXBN3qgaVQ0opkkxj2ZEykdVys3CA6uonief17CQRBTRlF3fGoB01fw5/WKa75w==",
+                            Password = "AQAAAAEAAAPoAAAAEKIgds7XGuDN6g6Ge+rtxdATeYyrMFbKORh0wp4jll6gF+wTzaDz1wU4L7HkD/ACMA==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 1,
                             Username = "admin"
@@ -150,9 +150,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Property<string>("DataBase64")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FileTypeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnUpdate()
                         .HasColumnType("datetime2")
@@ -161,8 +158,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ActivityId");
-
-                    b.HasIndex("FileTypeId");
 
                     b.ToTable("Arquives");
                 });
@@ -227,9 +222,6 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -242,10 +234,13 @@ namespace Hackathon.Infrastructure.Migrations
 
             modelBuilder.Entity("Hackathon.Domain.Models.DeliveryActivity", b =>
                 {
-                    b.Property<int>("ActivityId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ActivityId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -254,61 +249,19 @@ namespace Hackathon.Infrastructure.Migrations
                     b.Property<string>("DataBase64")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ActivityId", "StudentId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivityId");
 
                     b.HasIndex("StudentId");
 
                     b.ToTable("Tb_DeliveryActive", (string)null);
-                });
-
-            modelBuilder.Entity("Hackathon.Domain.Models.Enumerations.FileType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("Varchar(30)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tb_File_Types", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "PDF"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "PNG"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "JPEG"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "JPG"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "MP3"
-                        });
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.Enumerations.Subject", b =>
@@ -447,7 +400,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "instru@api.com",
                             Name = "kleber",
-                            Password = "AQAAAAEAAAPoAAAAEC/47a2jZRcHIfEp+T2Q087xLIsLDO2UWbMqTBu9BD5XEbpyNfU/bZCcXnHBh5J/JQ==",
+                            Password = "AQAAAAEAAAPoAAAAEF3dfquH0U/CqfDu38XkFprC7/lqX623KanwdHVqhY2zPhdPuvKsGiF0WYU7rQkXRQ==",
                             SubjectId = 1,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 2,
@@ -517,7 +470,7 @@ namespace Hackathon.Infrastructure.Migrations
                             CreatedAt = new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "instru@api.com",
                             Name = "kleber",
-                            Password = "AQAAAAEAAAPoAAAAELknbuldbnKeHlzZ6GWKi3GTojgKPgapQypGNqugP1LNQ1O0G6h7Qp6LsCjeqbLj9g==",
+                            Password = "AQAAAAEAAAPoAAAAEMBsjwiEvqMqqaXVpTdRWyEK9zdA+h62b4oDYUDIjo/4sul9rFrxsS0X+ql0qerUJA==",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserRoleId = 3,
                             Username = "instru"
@@ -554,15 +507,7 @@ namespace Hackathon.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Hackathon.Domain.Models.Enumerations.FileType", "FileType")
-                        .WithMany()
-                        .HasForeignKey("FileTypeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Activity");
-
-                    b.Navigation("FileType");
                 });
 
             modelBuilder.Entity("Hackathon.Domain.Models.ClassRoom", b =>

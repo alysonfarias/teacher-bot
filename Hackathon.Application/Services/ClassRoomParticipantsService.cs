@@ -45,6 +45,7 @@ namespace Hackathon.Application.Services
         
         public async Task<IEnumerable<ClassRoomResponse>> GetParticipatingClasses(int studentId)
         {
+            _classRoomParticipantsRepository.AddPreQuery(x => x.Include(x => x.Student).ThenInclude(x => x.ClassRooms));
             var listClassRoomsParticipants = await _classRoomParticipantsRepository
                 .Query()
                 .Where(cp => cp.StudentId == studentId)

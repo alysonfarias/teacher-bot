@@ -147,6 +147,7 @@ namespace Hackathon.Application.Services
             //TODO: verificar um jeito de colocar isso na user secrets
             // string apiKey = Configuration.GetSection<String>["SendGridAPIKey"];
             string apiKey = "";
+
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
@@ -210,7 +211,6 @@ namespace Hackathon.Application.Services
                             ActivityId = activityId,
                             CreatedAt = DateTime.Now,
                             UpdatedAt = DateTime.Now,
-                            FileTypeId = 1,
                             DataBase64 = fileB64
                         };
 

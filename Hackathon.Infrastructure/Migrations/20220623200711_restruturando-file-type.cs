@@ -5,23 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hackathon.Infrastructure.Migrations
 {
-    public partial class migration_teste7 : Migration
+    public partial class restruturandofiletype : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "tb_File_Types",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "Varchar(30)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tb_File_Types", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "tb_Subjects",
                 columns: table => new
@@ -187,7 +174,6 @@ namespace Hackathon.Infrastructure.Migrations
                 {
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     ClassRoomId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -215,7 +201,6 @@ namespace Hackathon.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataBase64 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FileTypeId = table.Column<int>(type: "int", nullable: false),
                     ActivityId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getDate()")
@@ -229,28 +214,23 @@ namespace Hackathon.Infrastructure.Migrations
                         principalTable: "Activities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Arquives_tb_File_Types_FileTypeId",
-                        column: x => x.FileTypeId,
-                        principalTable: "tb_File_Types",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Tb_DeliveryActive",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DataBase64 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     ActivityId = table.Column<int>(type: "int", nullable: false),
-                    DataBase64 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tb_DeliveryActive", x => new { x.ActivityId, x.StudentId });
+                    table.PrimaryKey("PK_Tb_DeliveryActive", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Tb_DeliveryActive_Activities_ActivityId",
                         column: x => x.ActivityId,
@@ -263,18 +243,6 @@ namespace Hackathon.Infrastructure.Migrations
                         principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "tb_File_Types",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "PDF" },
-                    { 2, "PNG" },
-                    { 3, "JPEG" },
-                    { 4, "JPG" },
-                    { 5, "MP3" }
                 });
 
             migrationBuilder.InsertData(
@@ -301,17 +269,17 @@ namespace Hackathon.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Admins",
                 columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "UpdatedAt", "UserRoleId", "Username" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@api.com", "Admin Root Application", "AQAAAAEAAAPoAAAAENgIXBN3qgaVQ0opkkxj2ZEykdVys3CA6uonief17CQRBTRlF3fGoB01fw5/WKa75w==", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "admin" });
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@api.com", "Admin Root Application", "AQAAAAEAAAPoAAAAEKIgds7XGuDN6g6Ge+rtxdATeYyrMFbKORh0wp4jll6gF+wTzaDz1wU4L7HkD/ACMA==", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Instructors",
                 columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "SubjectId", "UpdatedAt", "UserRoleId", "Username" },
-                values: new object[] { 1, new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "instru@api.com", "kleber", "AQAAAAEAAAPoAAAAEC/47a2jZRcHIfEp+T2Q087xLIsLDO2UWbMqTBu9BD5XEbpyNfU/bZCcXnHBh5J/JQ==", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "instru" });
+                values: new object[] { 1, new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "instru@api.com", "kleber", "AQAAAAEAAAPoAAAAEF3dfquH0U/CqfDu38XkFprC7/lqX623KanwdHVqhY2zPhdPuvKsGiF0WYU7rQkXRQ==", 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "instru" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "BirthDate", "CreatedAt", "Email", "Name", "Password", "ResponsiblePhone", "UpdatedAt", "UserRoleId", "Username" },
-                values: new object[] { 1, new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "instru@api.com", "kleber", "AQAAAAEAAAPoAAAAELknbuldbnKeHlzZ6GWKi3GTojgKPgapQypGNqugP1LNQ1O0G6h7Qp6LsCjeqbLj9g==", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "instru" });
+                values: new object[] { 1, new DateTime(2001, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "instru@api.com", "kleber", "AQAAAAEAAAPoAAAAEMBsjwiEvqMqqaXVpTdRWyEK9zdA+h62b4oDYUDIjo/4sul9rFrxsS0X+ql0qerUJA==", null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "instru" });
 
             migrationBuilder.InsertData(
                 table: "ClassRooms",
@@ -334,11 +302,6 @@ namespace Hackathon.Infrastructure.Migrations
                 column: "ActivityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Arquives_FileTypeId",
-                table: "Arquives",
-                column: "FileTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ClassRooms_InstructorId",
                 table: "ClassRooms",
                 column: "InstructorId");
@@ -357,6 +320,11 @@ namespace Hackathon.Infrastructure.Migrations
                 name: "IX_Students_UserRoleId",
                 table: "Students",
                 column: "UserRoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tb_DeliveryActive_ActivityId",
+                table: "Tb_DeliveryActive",
+                column: "ActivityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tb_DeliveryActive_StudentId",
@@ -382,9 +350,6 @@ namespace Hackathon.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "tb_student_classroom");
-
-            migrationBuilder.DropTable(
-                name: "tb_File_Types");
 
             migrationBuilder.DropTable(
                 name: "Activities");
