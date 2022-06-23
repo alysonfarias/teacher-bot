@@ -8,6 +8,5 @@ namespace Hackathon.Application.DTOS.Student
     {
         public string ResponsiblePhone { get; set; }
         public IEnumerable<ClassRoomMinimalResponse> ClassRooms { get; set; }
-        public UserRoleResponse UserRole { get; set; }
     }
 }

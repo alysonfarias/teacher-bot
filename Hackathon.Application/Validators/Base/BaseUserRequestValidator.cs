@@ -39,9 +39,7 @@ namespace Hackathon.Application.Validators.Base
             RuleFor(ur => ur.BirthDate)
                 .LessThan(p => DateTime.Now).WithMessage("A data deve estar no passado");
 
-            RuleFor(ur => ur.UserRoleId)
-                .Must(type => Enumeration.GetAll<UserRole>().Any(userRole => userRole.Id==type))
-                .WithMessage("Tipo de usuario invalido");
+
 
             RuleFor(ur => ur.Password)
                 .NotEmpty()
@@ -55,7 +53,7 @@ namespace Hackathon.Application.Validators.Base
             var hasUpperChar = new Regex(@"[A-Z]+");
             var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
 
-            return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && !(hasSymbols.IsMatch(password));
+            return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && (hasSymbols.IsMatch(password));
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Hackathon.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ClassRoomResponse>> GetAsync([FromQuery] ClassRoomParams queryParams)
+        public async Task<IEnumerable<ClassRoomResponse>> GetAllMyClassesAsync([FromQuery] ClassRoomParams queryParams)
         {
             return await _classRoomService.GetAsync(queryParams);
         }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="DTO\**" />
+
     <Compile Remove="Exceptions\**" />
     <Compile Remove="Utils\**" />
     <Compile Remove="Validator\**" />
@@ -28,6 +29,18 @@
     <PackageReference Include="LinqKit" Version="1.2.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
     <PackageReference Include="SendGrid" Version="9.28.0" />
+    <EmbeddedResource Remove="DTO\**" />
+    <None Remove="DTO\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Validator\" />
+
   </ItemGroup>
 
   <ItemGroup>
