@@ -17,10 +17,12 @@ namespace Hackathon.Application.Mappers
         {
             CreateMap<Instructor, InstructorResponse>();
             CreateMap<Student, StudentResponse>();
+            CreateMap<Student, StudentMinimalResponse>();
                 //.MergeList(x => x.ClassRooms, vm => vm.ClassRooms);
 
             CreateMap<UserRole, UserRoleResponse>();
             CreateMap<ClassRoom, ClassRoomResponse>();
+            CreateMap<ClassRoom, ClassRoomMinimalResponse>();
             CreateMap<Activity, ActivityResponse>();
             CreateMap<Arquive, ArquiveResponse>();
         }

@@ -11,8 +11,8 @@ namespace Hackathon.Application.DTOS.ClassRoom
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public InstructorResponse Instructor { get; set; }
-        public IEnumerable<StudentResponse> Students { get; set; }
+        public int InstructorId { get; set; }
+        public IEnumerable<StudentMinimalResponse> Students { get; set; }
         public IEnumerable<ActivityResponse> Activities { get; set; }
     }
 }

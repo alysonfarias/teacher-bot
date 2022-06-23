@@ -2,7 +2,6 @@ using AutoMapper;
 using FluentValidation;
 using Hackathon.Application.CustomExceptions;
 using Hackathon.Application.DTOS.Activity;
-using Hackathon.Application.DTOS.Arquive;
 using Hackathon.Application.DTOS.ClassRoom;
 using Hackathon.Application.Interfaces.Services;
 using Hackathon.Application.Params;
@@ -67,10 +66,10 @@ namespace Hackathon.Application.Services
             var classRoom = _mapper.Map<ClassRoom>(classRoomRequest);
             classRoom.InstructorId = intructorId;
             
-            var classRoomCreated = _classRoomRepository.RegisterAsync(classRoom);
+            await _classRoomRepository.RegisterAsync(classRoom);
             await _unitOfWork.CommitAsync();
 
-            return _mapper.Map<ClassRoomResponse>(classRoomCreated);
+            return _mapper.Map<ClassRoomResponse>(classRoom);
         }
 
         public async Task<ClassRoomResponse> UpdateAsync(int id, ClassRoomRequest classRoomRequest)
@@ -130,7 +129,7 @@ namespace Hackathon.Application.Services
 
             classRoom.Activities = listActivities;
 
-            bool isSucess = await SendEmailToStudents(activity, classRoom);
+            bool isSuccess = await SendEmailToStudents(activity, classRoom);
 
             await _unitOfWork.CommitAsync();
 
