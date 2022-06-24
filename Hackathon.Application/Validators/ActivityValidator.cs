@@ -21,7 +21,7 @@ namespace Hackathon.Application.Validators
 
             RuleFor(x => x.DueDate)
                 .NotEmpty().WithMessage("Campo Obrigatório")
-                .LessThan(x => DateTime.Now)
+                .GreaterThan(x => DateTime.Now)
                 .WithMessage("Data inválida! A data do vencimento não pode está no passado");
         }
     }
